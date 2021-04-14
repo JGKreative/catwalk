@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -w"
+    "build": "webpack",
+    "watch": "webpack -w" 
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/JGKreative/catwalk#readme",
   "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-transform-react-jsx-compat": "^7.12.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
     "webpack": "^5.33.1",
     "webpack-cli": "^4.6.0"
   },
