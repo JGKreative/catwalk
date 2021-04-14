@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JGKreative/catwalk/issues"
   },
-  "homepage": "https://github.com/JGKreative/catwalk#readme"
+  "homepage": "https://github.com/JGKreative/catwalk#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
