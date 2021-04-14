@@ -16,7 +16,13 @@
     "url": "https://github.com/JGKreative/catwalk/issues"
   },
   "homepage": "https://github.com/JGKreative/catwalk#readme",
+<<<<<<< HEAD
   "dependencies": {
     "express": "^4.17.1"
+=======
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1"
+>>>>>>> 7cc91bd50f15667802d06e3b5eba43cb0f5fda58
   }
 }
