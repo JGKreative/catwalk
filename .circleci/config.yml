@@ -4,6 +4,7 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
+  slack: circleci/slack@4.4.0
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
@@ -13,4 +14,4 @@ workflows:
       - welcome/run
 
 
-# This is a comment to test that circleci is working
+# This is a comment to test that slack notifications are working
