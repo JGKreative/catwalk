@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_and_test:
     working_directory: ~/catwalk
     docker:
       - image: circleci/node:14.16.0
