@@ -11,7 +11,12 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      test:
+        steps:
+          - welcome/run: npm test
+
+# set working directory
+working_directory: ~/catwalk
 
 
 # This is a comment to test that slack notifications are working
