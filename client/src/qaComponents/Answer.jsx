@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Answer = ({ answer }) => (
   <div>
@@ -12,8 +12,8 @@ const Answer = ({ answer }) => (
   </div>
 );
 
-Answer.propTypes = {
-  answer: PropTypes.isRequired,
-};
+// Answer.propTypes = {
+//   answer: PropTypes.isRequired,
+// };
 
 export default Answer;
