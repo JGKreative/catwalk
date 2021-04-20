@@ -12,6 +12,7 @@ class App extends React.Component {
         <div>Goes</div>
         <div>Up</div>
         <div>HERE!!!</div>
+        <div>Testing Prop Types RULE</div>
       </div>
     );
   }
