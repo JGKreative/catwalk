@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar = () => (
   <form>
-    Search for questions here!
+    <input type="text" placeholder="Search for questions here" />
     <button type="submit"> Search </button>
   </form>
 );
