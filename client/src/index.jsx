@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RatingsAndReviewsService from './/RatingAndReviews/RatingsAndReviewsService.jsx';
 
 class App extends React.Component {
+
   render() {
+
     return (
+
       <div>
         <h1>Cats Walking</h1>
         <div>Product</div>
@@ -12,8 +16,9 @@ class App extends React.Component {
         <div>Goes</div>
         <div>Up</div>
         <div>HERE!!!</div>
-        <div>Testing Prop Types RULE</div>
+        <RatingsAndReviewsService />
       </div>
+
     );
   }
 }
