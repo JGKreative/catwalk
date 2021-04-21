@@ -5,6 +5,7 @@ const Question = ({
   body, date, askerName, answers,
 }) => (
   <div>
+    Q:
     <div>{body}</div>
     <div>{date}</div>
     <div>{askerName}</div>
