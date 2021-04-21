@@ -16,7 +16,6 @@ const testData = [
 
 const AnswersList = () => (
   <div>
-    A:
     <Answer answer={testData[0]} />
     <Answer answer={testData[1]} />
   </div>

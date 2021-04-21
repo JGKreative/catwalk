@@ -6,9 +6,9 @@ const Question = ({
 }) => (
   <div>
     Q:
-    <div>{body}</div>
-    <div>{date}</div>
-    <div>{askerName}</div>
+    <span>{body}</span>
+    <span>{date}</span>
+    <span>{askerName}</span>
     <AnswersList answers={answers} />
     <button type="button">Add an answer</button>
     <button type="button">Show more answers</button>

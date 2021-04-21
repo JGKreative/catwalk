@@ -2,12 +2,13 @@ import React from 'react';
 
 const Answer = ({ answer }) => (
   <div>
+    A:
     <span>{answer.bodyText}</span>
-    <span>
-      {answer.username}
+    <div>
+      {`${answer.username} `}
       |
-      {answer.timestamp}
-    </span>
+      {` ${answer.timestamp}`}
+    </div>
   </div>
 );
 
