@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import AnswersList from './AnswersList';
 
 const Question = ({
@@ -13,9 +12,5 @@ const Question = ({
     <div>add some buttons</div>
   </div>
 );
-
-// Question.propTypes = {
-
-// };
 
 export default Question;

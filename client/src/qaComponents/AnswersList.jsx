@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Answer from './Answer';
 
 const testData = [
@@ -22,8 +21,5 @@ const AnswersList = () => (
     <Answer answer={testData[1]} />
   </div>
 );
-
-// AnswersList.propTypes = {
-// };
 
 export default AnswersList;

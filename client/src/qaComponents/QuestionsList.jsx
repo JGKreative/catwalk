@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Question from './Question';
 
 const QuestionsList = () => (
@@ -9,8 +8,5 @@ const QuestionsList = () => (
     <Question body="why do I feel the need to add clever questions for a test?" />
   </div>
 );
-
-// Question.propTypes = {
-// };
 
 export default QuestionsList;
