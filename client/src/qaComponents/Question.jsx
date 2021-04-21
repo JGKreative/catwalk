@@ -9,7 +9,8 @@ const Question = ({
     <div>{date}</div>
     <div>{askerName}</div>
     <AnswersList answers={answers} />
-    <div>add some buttons</div>
+    <button type="button">Add an answer</button>
+    <button type="button">Show more answers</button>
   </div>
 );
 

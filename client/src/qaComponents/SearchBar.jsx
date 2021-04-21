@@ -1,7 +1,10 @@
 import React from 'react';
 
 const SearchBar = () => (
-  <div>If you got more work done you could use me to search for stuff</div>
+  <form>
+    Search for questions here!
+    <button type="submit"> Search </button>
+  </form>
 );
 
 export default SearchBar;

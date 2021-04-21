@@ -7,8 +7,8 @@ const QnAParentComp = () => (
     Questions:
     <SearchBar />
     <QuestionsList />
-    <div>Add some buttons</div>
-    <div>And some more buttons</div>
+    <button type="button">Ask a question</button>
+    <button type="button">Show more questions</button>
   </div>
 );
 
