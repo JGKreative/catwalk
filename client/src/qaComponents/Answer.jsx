@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Answer = ({ answer }) => (
+const Answer = ({ body, date, answerer_name: answererName }) => (
   <div>
     A:
-    <span>{answer.bodyText}</span>
+    <span>{body}</span>
     <div>
-      {`${answer.username} `}
+      {`${answererName} `}
       |
-      {` ${answer.timestamp}`}
+      {` ${date}`}
     </div>
   </div>
 );
