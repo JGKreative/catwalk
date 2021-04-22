@@ -21,5 +21,6 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    camelcase: [2, { ignoreDestructuring: true }],
   },
 };
