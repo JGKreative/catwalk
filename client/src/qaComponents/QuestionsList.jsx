@@ -1,10 +1,11 @@
 import React from 'react';
 import Question from './Question';
 
-const QuestionsList = () => (
+const QuestionsList = ({ questions }) => (
   <div>
-    <Question body="why do we have shower thoughts, but not bath thoughts?" />
-    <Question body="why do I feel the need to add clever questions for a test?" />
+    {questions.map((question) => (
+      <Question question={question} />
+    ))}
   </div>
 );
 
