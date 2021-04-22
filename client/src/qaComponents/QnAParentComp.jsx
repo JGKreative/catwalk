@@ -4,18 +4,17 @@ import SearchBar from './SearchBar';
 import testData from '../../../test/QASpecs/testData';
 
 const QnAParentComp = () => {
-  const [questionsData, setQuestionsData] = useState(testData);
-
+  const [questionsData, setQuestionsData] = useState(testData.results);
+  console.log('q data', questionsData);
   return (
-    <qaDataContext.Provider>
+    <div>
       Questions:
       <SearchBar />
       <QuestionsList questions={questionsData} />
       <button type="button">Ask a question</button>
       <button type="button">Show more questions</button>
-    </qaDataContext.Provider>
+    </div>
   );
 };
 
 export default QnAParentComp;
-
