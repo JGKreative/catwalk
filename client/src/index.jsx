@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RatingsAndReviewsService from './/RatingAndReviews/RatingsAndReviewsService.jsx';
+import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 
 class App extends React.Component {
 

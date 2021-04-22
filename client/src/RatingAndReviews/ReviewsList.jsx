@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Review from './Review.jsx';
+import Review from './Review';
 
 const ReviewsList = () => {
 
@@ -13,6 +13,7 @@ const ReviewsList = () => {
     </div>
 
   );
-}
+};
 
 export default ReviewsList;
+

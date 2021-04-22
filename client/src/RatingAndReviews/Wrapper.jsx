@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewsList from './ReviewsList.jsx';
+import ReviewsList from './ReviewsList';
 
 const RatingsAndReviewsService = () => {
 
@@ -8,6 +8,7 @@ const RatingsAndReviewsService = () => {
       <ReviewsList />
     </div>
   );
-}
+};
 
 export default RatingsAndReviewsService;
+
