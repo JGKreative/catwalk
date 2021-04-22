@@ -1,9 +1,10 @@
 import React from 'react';
+import _ from 'underscore';
 import Answer from './Answer';
 
 const AnswersList = ({ answers }) => (
   <div>
-    {answers.map((answer) => (
+    {_.map(answers, (answer) => (
       <Answer answer={answer} />
     ))}
   </div>
