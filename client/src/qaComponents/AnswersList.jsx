@@ -5,7 +5,7 @@ import Answer from './Answer';
 const AnswersList = ({ answers }) => (
   <div>
     {_.map(answers, (answer) => (
-      <Answer answer={answer} />
+      <Answer answer={answer} key={answer.id} />
     ))}
   </div>
 );

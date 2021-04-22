@@ -4,8 +4,7 @@ import SearchBar from './SearchBar';
 import testData from '../../../test/QASpecs/testData';
 
 const QnAParentComp = () => {
-  const [questionsData, setQuestionsData] = useState(testData.results);
-  console.log('q data', questionsData);
+  const [questionsData, setQuestionsData] = useState(testData.questionsData.results);
   return (
     <div>
       Questions:
