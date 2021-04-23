@@ -47,6 +47,4 @@ const questionsData = {
   ]
 };
 
-module.exports = {
-  questionsData,
-};
+export default questionsData;

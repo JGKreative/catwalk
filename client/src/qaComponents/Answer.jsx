@@ -8,9 +8,10 @@ const Answer = ({ answer }) => {
       A:
       <span>{body}</span>
       <div>
-        {`${answererName} `}
-        |
-        {` ${date}`}
+        {answererName}
+      </div>
+      <div>
+        {date}
       </div>
     </div>
   );
