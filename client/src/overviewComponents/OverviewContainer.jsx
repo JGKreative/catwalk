@@ -5,7 +5,6 @@ import SampleData from './SampleData';
 
 // const data = SampleData;
 const { product, productStyles } = SampleData;
-console.log('product', product);
 
 const OverviewContainer = () => (
 
