@@ -1,9 +1,10 @@
 import React from 'react';
 import QnA from './qaComponents/QnAParentComp';
+import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 
 const App = () => (
   <div>
-    Booya. Im the App.
+    <RatingsAndReviewsService />
     <QnA />
   </div>
 );
