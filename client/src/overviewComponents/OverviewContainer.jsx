@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProductImages from './ProductImages';
 import ProductDetail from './ProductDetail';
 import SampleData from './SampleData';
