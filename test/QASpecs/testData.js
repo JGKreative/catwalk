@@ -15,7 +15,6 @@ const questionsData = {
             "answerer_name": "Seller",
             "helpfulness": 4,
             "photos": []
-            // ...
           }
         }
       },
@@ -45,10 +44,7 @@ const questionsData = {
           }
         }
       },
-      // ...
   ]
 };
 
-module.exports = {
-  questionsData,
-};
+export default questionsData;
