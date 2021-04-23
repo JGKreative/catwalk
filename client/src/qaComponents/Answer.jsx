@@ -1,15 +1,20 @@
 import React from 'react';
 
-const Answer = ({ answer }) => (
-  <div>
-    A:
-    <span>{answer.bodyText}</span>
+const Answer = ({ answer }) => {
+  const { body, date, answerer_name: answererName } = answer;
+
+  return (
     <div>
-      {`${answer.username} `}
-      |
-      {` ${answer.timestamp}`}
+      A:
+      <span>{body}</span>
+      <div>
+        {answererName}
+      </div>
+      <div>
+        {date}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Answer;
