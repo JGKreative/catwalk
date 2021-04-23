@@ -1,5 +1,5 @@
 import React from 'react';
-import QnA from './qaComponents/QnAParentComp';
+// import QnA from './qaComponents/QnAParentComp';
 import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
     <div>Up</div>
     <div>HERE!!!</div>
     <RatingsAndReviewsService />
-    <QnA />
+    {/* <QnA /> */}
   </div>
 );
 

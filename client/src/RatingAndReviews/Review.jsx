@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+/* eslint-disable */
+
 const Review = () => {
 
   return (
