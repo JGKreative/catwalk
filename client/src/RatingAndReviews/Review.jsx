@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 /* eslint-disable */
 
-const Review = () => {
+const Review = ({ data }) => {
 
   return (
 
@@ -11,14 +11,14 @@ const Review = () => {
         <div> - - - - -- - - - - - - - - - - - - - - - - - - - - - </div>
         <span> * * * * * </span>
         <span>(---Blank ----Space-----Here---)</span>
-        <span> UserNameGoesHere </span>
-        <span> April 20, 2021 </span>
+        <span> {data.reviewer_name} </span>
+        <span> {data.date} </span>
       </div>
       <div className="ReviewBody">
-        <h3> I am a a review title that will have word-break... </h3>
-        <p> ...truncation - eventually </p>
+        <h3> {data.summary} </h3>
+        <p> ...word-break truncation of summary (if needed) </p>
         <br />
-        <p> And I am the body of the review which has no less than 50chars to be accepted </p>
+        <p> {data.body} </p>
       </div>
       <div> - - - - -- - - - - - - - - - - - - - - - - - - - - - </div>
     </div>

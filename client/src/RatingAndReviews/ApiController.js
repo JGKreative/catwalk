@@ -3,7 +3,7 @@
 /*
 https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea
 GET:
-  /reviews/(insertPrductId)
+  /reviews/(insertProductId)
   /reviews/meta/(insertPrductId)
 POST:
  /reviews
@@ -15,16 +15,21 @@ PUT: (reporting a review - flagging it to not show up)
 
 module.exports = {
 
-  findReviewByProductId: function () {
+  getReviews: function (productId) {
+    // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/(productId)
 
   },
 
-  findReviewByProductId: function () {
-
+  getMetaData: function (productId) {
+    // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/meta/(productId)
   },
 
-  findReviewByProductId: function () {
-
+  getAvgRating: function (productId) {
+    // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/(productId)
+    // then iterate through all reviews,
+      // adding each rating to a sum
+      // divide by number of ratings
+    // return average
   },
 
 };
@@ -43,6 +48,6 @@ module.exports = {
      - Access to all reviews for a product
    - % of reccommended reviews:
      - Access to all reviews for a product
- * Product Breakdown ()
+ * Product Breakdown (...uggh)
 
 */
