@@ -13,6 +13,7 @@ const OverviewContainer = () => (
     <ProductImages
       className="product-description-images"
       images={productStyles.results[0].photos}
+      styleId={productStyles.results[0].style_id}
       // images={SampleData.productStyles.results}
     />
     <ProductDetail
@@ -23,6 +24,7 @@ const OverviewContainer = () => (
       styles={productStyles.results}
     />
   </div>
+
 );
 
 export default OverviewContainer;
