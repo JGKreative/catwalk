@@ -1,18 +1,33 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import axios from 'axios';
 import QA from '../../client/src/qaComponents/index';
 import testData from './testData';
 
-describe('QA Module', () => {
-  //NOTE: Once get requests from API are written, refactor this test
-  test('retrieved data should be made available to child components', () => {
-    var targetQ = "Why is this product cheaper here than other sites?"
-    var targetA = "We are selling it here without any markup from the middleman!"
-    render(<QA.QnAParentComp questionsData={testData} />);
-    expect(screen.getByText(targetQ)).toBeTruthy();
-    expect(screen.getByText(targetA)).toBeTruthy();
-  });
-});
+jest.mock('axios');
+
+// describe('QA Module', () => {
+//   //NOTE: Once get requests from API are written, refactor this test
+//   test('it should retrieve data from the API', () => {
+//     axios.get.mockResolvedValue({
+//       data: testData
+//     });
+//     expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/https:\/\/app-hrsei-api.herokuapp.com\/api\/fec2\/hr-sea\/qa\/questions/))
+//   });
+
+//   test('retrieved data should be made available to be rendered by child components', async () => {
+//     axios.get.mockResolvedValue({
+//       data: testData
+//     });
+//     // var targetQ = "Why is this product cheaper here than other sites?"
+//     // var targetA = "We are selling it here without any markup from the middleman!"
+//     // render(<QA.QnAParentComp questionsData={testData} />);
+//     render(<QA.QnAParentComp />);
+//     expect(screen.getByText(targetQ)).toBeTruthy();
+//     expect(screen.getByText(targetA)).toBeTruthy();
+//   });
+
+// });
 
 describe('Question Component', ()=>{
 
