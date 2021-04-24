@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Review from './Review';
 
-import data from './fakeData';
-const reviewsData = data.reviewsForProductId20100.results;
 
+const ReviewsList = ({ data }) => {
 
-const ReviewsList = () => {
+  const reviews = data.map((review) => (
+    <Review review={review} key={review.review_id} />
+  ));
 
   return (
 
     <div className="ReviewsList">
-      <Review data={reviewsData[0]} />
-      <Review data={reviewsData[1]} />
-      <button>See More</button>
-      <button>Add Review</button>
+      {/* <Review data={data[0]} />
+      <Review data={data[1]} /> */}
+      {reviews}
+      <button className="more-reviews-btn"> See More </button>
+      <button className="add-review-btn"> Add Review </button>
     </div>
 
   );
