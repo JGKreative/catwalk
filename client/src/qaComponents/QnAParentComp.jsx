@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import fetchQuestions from './ApiController.js';
-// import testData from '../../../test/QASpecs/testData';
-
-// const QnAParentComp = () => {
-// const { questionsData } = testData;
-// const [allQuestions, setAllQuestions] = useState(testData.results);
 
 const QnAParentComp = () => {
   const [allQuestions, setAllQuestions] = useState();
