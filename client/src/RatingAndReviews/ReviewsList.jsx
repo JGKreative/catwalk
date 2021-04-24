@@ -5,7 +5,7 @@ import Review from './Review';
 const ReviewsList = ({ data }) => {
 
   const reviews = data.map((review) => (
-    <Review review={review} key={review.review_id} />
+    <Review review={review} key={review.review_id} rating={review.rating} />
   ));
 
   return (
