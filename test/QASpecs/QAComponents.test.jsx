@@ -12,10 +12,10 @@ describe('QA Module', () => {
     axios.get.mockResolvedValue({
       data: testData
     });
-    expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/app-hrsei-api.herokuapp.com/api/fec2/hr-sea/qa/questions?product_id=/))
+    expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/https:\/\/app-hrsei-api.herokuapp.com\/api\/fec2\/hr-sea\/qa\/questions/))
   });
 
-  test('retrieved data should be made available to be rendered by child components', () => {
+  test('retrieved data should be made available to be rendered by child components', async () => {
     axios.get.mockResolvedValue({
       data: testData
     });

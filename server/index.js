@@ -10,10 +10,10 @@ app.use(express.json());
 // want this??
 // app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  console.log(`${req.method} request coming in for ${req.url}`);
-  next()
-})
+// app.use((req, res, next) => {
+//   console.log(`${req.method} request coming in for ${req.url}`);
+//   next()
+// })
 
 
 
