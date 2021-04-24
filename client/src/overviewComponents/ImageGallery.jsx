@@ -1,15 +1,11 @@
 import React from 'react';
-import { setNewMainImage } from './EventHandlers';
+import ImageList from './ImageList';
+// import ProductDetailWrapper from './productDetailWrapper.jsx';
 
 const ImageGallery = ({ images, styleId }) => (
   <div>
-    <ul>
-      {images.map((item) => (
-        <li key={styleId}>
-          <img src={item.thumbnail_url} alt={item.url} width="5%" height="5%" onClick={setNewMainImage} aria-hidden="true" />
-        </li>
-      ))}
-    </ul>
+    <ImageList images={images} styleId={styleId} />
+    <img id="product-images-main" src={images[0].url} alt="" />
   </div>
 );
 
