@@ -8,7 +8,15 @@ const { product, productStyles } = SampleData;
 
 const OverviewContainer = () => {
   const [currentStyle] = useState(productStyles.results[0]);
-  console.log('current style', currentStyle);
+
+  const getTruePrice = () => {
+    if (currentStyle.sale_price) {
+      return currentStyle.sale_price;
+    }
+    return currentStyle.original_price;
+  };
+
+  const [currentPrice] = useState(() => getTruePrice());
 
   return (
     <div className="module product-description">
@@ -21,7 +29,7 @@ const OverviewContainer = () => {
         className="product-description-detail"
         category={product.category}
         title={product.name}
-        price={product.default_price}
+        price={currentPrice}
         styles={productStyles.results}
       />
     </div>

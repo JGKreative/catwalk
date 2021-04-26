@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authToken from '../../../authToken.js';
+// import authToken from '../../../authToken.js';
 
 const fetchQuestions = (productId, callback) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/qa/questions', {
