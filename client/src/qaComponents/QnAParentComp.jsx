@@ -20,6 +20,7 @@ const QnAParentComp = () => {
   const submitSearch = (event) => {
     event.preventDefault();
     toggleDisplaySearchResults();
+    setSearchTerm('');
     const questionBodyMatch = ({ question_body: question }) => {
       const lowerCSearch = searchTerm.toLowerCase();
       const lowerCBody = question.toLowerCase();
