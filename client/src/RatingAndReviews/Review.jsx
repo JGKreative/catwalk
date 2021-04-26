@@ -8,6 +8,10 @@ const Review = ({ review, rating }) => {
 
   let recommend = recommended ? <div><span>&#10003;</span> I recommend this product! </div> : <div></div>
 
+  var date = new Date(review.date).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
   return (
 
     <div className="Review">
@@ -15,8 +19,9 @@ const Review = ({ review, rating }) => {
         <div> - - - - - - - - -{review.review_id} - - - - - - - - -</div>
         <StarRating rating={rating} />
         <span> {" - - - - - - - - "} </span>
-        <span> {review.reviewer_name} </span>
-        <span> {review.date} </span>
+        <span> {review.reviewer_name}, </span>
+        <span>{" "}</span>
+        <span> {date} </span>
       </div>
       <div className="ReviewBody">
         <h3> {review.summary} </h3>
