@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
+import Helpful from './Helpful';
 
 /* eslint-disable */
 
@@ -28,7 +29,9 @@ const Review = ({ review, rating }) => {
         <p> ...word-break truncation of summary (if needed) </p>
         <br />
         <p> {review.body} </p>
-        {recommend}
+        <div> {recommend} </div>
+        <br/>
+        <Helpful />
         <br/>
       </div>
     </div>
