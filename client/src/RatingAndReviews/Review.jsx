@@ -26,7 +26,6 @@ const Review = ({ review, rating }) => {
       </div>
       <div className="ReviewBody">
         <h3> {review.summary} </h3>
-        <p> ...word-break truncation of summary (if needed) </p>
         <br />
         <p> {review.body} </p>
         <div> {recommend} </div>

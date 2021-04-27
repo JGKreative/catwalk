@@ -6,7 +6,7 @@ const Helpful = () => {
   const [helpfulNoCount, setHelpfulNoCount] = useState(0);
   const [reported, setReported] = useState(false);
 
-  const displayReport = !reported ? <a style={{ textDecorationLine: 'underline' }} onClick={() => setReported(true)}> Report </a> : <span> Reported </span>
+  const displayReported = !reported ? <a style={{ textDecorationLine: 'underline' }} onClick={() => setReported(true)}> Report </a> : <span> Reported </span>
 
   const onYesClick = (e) => {
     setHelpfulYesCount(helpfulYesCount + 1);
@@ -20,16 +20,17 @@ const Helpful = () => {
 
   return (
     <div>
-      Was This Review Helpful? {" "}
-      <a style={!hasClicked ? { textDecorationLine: 'underline' } : null } onClick={!hasClicked ? onYesClick : null}>
+      Was this review helpful? {" "}
+      <a style={!hasClicked ? { textDecorationLine: 'underline' } : null} onClick={!hasClicked ? onYesClick : null}>
         Yes
       </a>
       <span> ({helpfulYesCount}) </span>
-      <a style={!hasClicked ? { textDecorationLine: 'underline' } : null } onClick={!hasClicked ? onNoClick : null}>
+      <a style={!hasClicked ? { textDecorationLine: 'underline' } : null} onClick={!hasClicked ? onNoClick : null}>
         No
       </a >
       <span> ({helpfulNoCount}) </span>
-      { displayReport}
+      <span>{" | "}</span>
+      { displayReported }
     </div >
   );
 }
