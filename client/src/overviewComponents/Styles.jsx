@@ -10,7 +10,6 @@ const Styles = ({ styles }) => {
         {styles.map((style) => (
           <li>
             <button onClick={() => { setStyle(style); }} type="button">
-              Set New Style
               <img
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
