@@ -18,7 +18,7 @@ const ReviewsList = ({ data }) => {
     <div className="ReviewsList">
       {displayReviews}
       {seeMoreButton}
-      <button className="add-review-btn"> Add Review </button>
+      <button className="add-review-btn"> Add Review + </button>
     </div>
 
   );

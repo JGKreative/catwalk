@@ -7,11 +7,34 @@ import Helpful from './Helpful';
 const Review = ({ review, rating }) => {
   const [recommended, setRecommended] = useState(review.recommend);
 
-  let recommend = recommended ? <div><span>&#10003;</span> I recommend this product! </div> : <div></div>
+  const recommend = recommended ?
+    <div>
+      <span>&#10003;</span>
+      I recommend this product!
+    </div> :
+    null;
 
-  var date = new Date(review.date).toLocaleDateString('en-US', {
+  const date = new Date(review.date).toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric'
   });
+
+  const reviewPhotos = review.photos.map((img) => (
+    <img style={{
+      width: '150px',
+      height: '150px',
+      border: '1px solid black'
+    }}
+      src={img.url}
+      key={img.id} />
+  ));
+
+  const response = review.response !== null ?
+    <div style={{ backgroundColor: 'lightgray' }} >
+      <p style={{ fontWeight: 'bold' }}> Response: </p>
+      <p> {review.response} </p>
+    </div> :
+    null;
+
 
   return (
 
@@ -28,10 +51,14 @@ const Review = ({ review, rating }) => {
         <h3> {review.summary} </h3>
         <br />
         <p> {review.body} </p>
+        <br />
+        <div id="review-thumbnails"> {reviewPhotos} </div>
         <div> {recommend} </div>
-        <br/>
+        <br />
+        {response}
+        <br />
         <Helpful />
-        <br/>
+        <div>______________________________________________________________</div>
       </div>
     </div>
 
