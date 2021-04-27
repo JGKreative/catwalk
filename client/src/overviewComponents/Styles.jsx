@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Styles = ({ styles }) => (
-  <div id="product-styles">
-    <h3 id="product-style-name" data-value="">{styles[0].name}</h3>
-    <ul>
-      {styles.map((item) => (
-        <li>
-          <img src={item.photos[0].thumbnail_url} alt={item.name} title={item.name} width="5%" height="5%" />
-        </li>
-      ))}
-    </ul>
-  </div>
+const Styles = ({ styles }) => {
+  const [currentStyle, setStyle] = useState(styles[0]);
 
-);
+  return (
+    <div id="product-styles">
+      <h3 id="product-style-name" data-value="">{currentStyle.name}</h3>
+      <ul>
+        {styles.map((style) => (
+          <li>
+            <button onClick={() => { setStyle(style); }} type="button">
+              <img
+                src={style.photos[0].thumbnail_url}
+                alt={style.name}
+                title={style.name}
+                width="20%"
+                height="20%"
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Styles;
