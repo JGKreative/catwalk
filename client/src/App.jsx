@@ -6,9 +6,9 @@ import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 
 const App = () => (
   <div>
-    <OverviewContainer />
+    {/* <OverviewContainer /> */}
     <RatingsAndReviewsService />
-    <QnA />
+    {/* <QnA /> */}
   </div>
 );
 

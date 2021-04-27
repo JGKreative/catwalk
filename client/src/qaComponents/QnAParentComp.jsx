@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
-import fetchQuestions from './ApiController';
+// import fetchQuestions from './ApiController';
 
 const QnAParentComp = () => {
   const [allQuestions, setAllQuestions] = useState();
