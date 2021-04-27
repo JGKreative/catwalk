@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import axios from 'axios';
-import QA from '../../client/src/qaComponents/index';
+// import QA from '../../client/src/qaComponents/index';
+import { Question, Answer } from '../../client/src/qaComponents/index';
 import testData from './testData';
 
-jest.mock('axios');
+// jest.mock('axios');
 
 // describe('QA Module', () => {
 //   //NOTE: Once get requests from API are written, refactor this test
@@ -33,7 +34,7 @@ describe('Question Component', ()=>{
 
   beforeAll(() => {
     const testQ = testData.results[0];
-    render(<QA.Question question={ testQ } />);
+    render(<Question question={ testQ } />);
   })
   test('it should display the askers name, the question body, and a timestamp from data matching the API shape', () => {
     const testQ = testData.results[0];
@@ -46,7 +47,7 @@ describe('Question Component', ()=>{
 describe('Answer Component', ()=>{
   beforeAll(() => {
     const testA = testData.results[0].answers[68];
-    render(<QA.Answer answer={testA} />)
+    render(<Answer answer={testA} />)
   })
   test('it should display the answerer name, answer body, and a timestamp from data matching the API shape', () => {
     const testA = testData.results[0].answers[68];

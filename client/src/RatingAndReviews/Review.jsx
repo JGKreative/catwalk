@@ -1,12 +1,40 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
+import Helpful from './Helpful';
 
 /* eslint-disable */
 
 const Review = ({ review, rating }) => {
   const [recommended, setRecommended] = useState(review.recommend);
 
-  let recommend = recommended ? <div><span>&#10003;</span> I recommend this product! </div> : <div></div>
+  const recommend = recommended ?
+    <div>
+      <span>&#10003;</span>
+      I recommend this product!
+    </div> :
+    null;
+
+  const date = new Date(review.date).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const reviewPhotos = review.photos.map((img) => (
+    <img style={{
+      width: '150px',
+      height: '150px',
+      border: '1px solid black'
+    }}
+      src={img.url}
+      key={img.id} />
+  ));
+
+  const response = review.response !== null ?
+    <div style={{ backgroundColor: 'lightgray' }} >
+      <p style={{ fontWeight: 'bold' }}> Response: </p>
+      <p> {review.response} </p>
+    </div> :
+    null;
+
 
   return (
 
@@ -15,16 +43,22 @@ const Review = ({ review, rating }) => {
         <div> - - - - - - - - -{review.review_id} - - - - - - - - -</div>
         <StarRating rating={rating} />
         <span> {" - - - - - - - - "} </span>
-        <span> {review.reviewer_name} </span>
-        <span> {review.date} </span>
+        <span> {review.reviewer_name}, </span>
+        <span>{" "}</span>
+        <span> {date} </span>
       </div>
       <div className="ReviewBody">
         <h3> {review.summary} </h3>
-        <p> ...word-break truncation of summary (if needed) </p>
         <br />
         <p> {review.body} </p>
-        {recommend}
-        <br/>
+        <br />
+        <div id="review-thumbnails"> {reviewPhotos} </div>
+        <div> {recommend} </div>
+        <br />
+        {response}
+        <br />
+        <Helpful />
+        <div>______________________________________________________________</div>
       </div>
     </div>
 
