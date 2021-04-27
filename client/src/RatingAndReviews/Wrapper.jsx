@@ -7,11 +7,13 @@ const reviewsData = data.reviewsForProductId20101.results;
 
 const RatingsAndReviewsService = () => {
   const [reviews, setReviews] = useState(reviewsData);
+  const [sortedBy, setSortedBy] = useState('helpfulness');
+  console.log('sortedBy: ', sortedBy)
 
   return (
     <div className="RnR-Main">
-      <SortOptions data={reviews} />
-      <ReviewsList data={reviews} />
+      <SortOptions data={reviews} setSorted={setSortedBy} />
+      <ReviewsList data={reviews} sortBy={sortedBy} />
     </div>
   );
 };
