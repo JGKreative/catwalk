@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import fetchQuestions from './ApiController';
@@ -45,6 +45,7 @@ const QnAParentComp = () => {
   }
 
   return (
+
     <div>
       Questions:
       <SearchBar
@@ -53,7 +54,7 @@ const QnAParentComp = () => {
         submitSearch={submitSearch}
         displayResults={displaySearchResults}
         toggleResults={toggleDisplaySearchResults}
-        refreshQuestions={() => {updateQuestions(currentProduct); }}
+        refreshQuestions={() => { updateQuestions(currentProduct); }}
       />
       <QuestionsList questions={allQuestions} />
       <button type="button">Ask a question</button>

@@ -1,7 +1,14 @@
 import React from 'react';
+import Helpfulness from './Helpfulness';
 
 const Answer = ({ answer }) => {
-  const { body, date, answerer_name: answererName } = answer;
+  const {
+    body,
+    date,
+    answerer_name: answererName,
+    id,
+    helpfulness,
+  } = answer;
 
   return (
     <div>
@@ -13,6 +20,7 @@ const Answer = ({ answer }) => {
       <div>
         {date}
       </div>
+      <Helpfulness parentId={id} parentType="answer" helpfulnessRank={helpfulness} />
     </div>
   );
 };
