@@ -7,7 +7,7 @@ import SampleData from './SampleData';
 const { product, productStyles } = SampleData;
 
 const OverviewContainer = () => {
-  const [currentStyle] = useState(productStyles.results[0]);
+  const [currentStyle, setStyle] = useState(productStyles.results[0]);
 
   const getTruePrice = () => {
     if (currentStyle.sale_price) {
@@ -19,7 +19,7 @@ const OverviewContainer = () => {
   const [currentPrice] = useState(() => getTruePrice());
 
   return (
-    <div className="module product-description">
+    <div className="module product-description" style={{ display: 'flex' }}>
       <ImageGallery
         className="product-description-images"
         images={currentStyle.photos}
@@ -31,6 +31,7 @@ const OverviewContainer = () => {
         title={product.name}
         price={currentPrice}
         styles={productStyles.results}
+        setStyle={setStyle}
       />
     </div>
   );
