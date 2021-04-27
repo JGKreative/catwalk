@@ -13,7 +13,20 @@ const api = {
       .catch((error) => {
         console.log(error);
       });
-  }
+  },
+
+  fetchProductById(productId) {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/products/${productId}`, {
+      headers: authToken
+    })
+      .then((response) => {
+        console.log(response.data);
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 }
 // const fetchProductById = () => {
 // };
