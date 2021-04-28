@@ -5,7 +5,7 @@ import QnA from './qaComponents/QnAParentComp';
 import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 
 const App = () => (
-  <div>
+  <div id="app">
     <OverviewContainer />
     <RatingsAndReviewsService />
     <QnA />
