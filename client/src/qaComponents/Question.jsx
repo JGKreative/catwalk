@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactModal from 'react-modal';
 import AnswersList from './AnswersList';
 import Helpfulness from './Helpfulness';
+import NewQAForm from './NewQAForm';
 
 const Question = ({ question }) => {
   const {
@@ -12,6 +14,12 @@ const Question = ({ question }) => {
     question_helpfulness: helpfulness,
   } = question;
 
+  const [showAddA, setShowAddA] = useState(false);
+
+  const toggleShowAddA = () => {
+    setShowAddA(!showAddA);
+  };
+
   return (
     <div>
       Q:
@@ -20,7 +28,20 @@ const Question = ({ question }) => {
       <span>{askerName}</span>
       <Helpfulness parentId={id} parentType="question" helpfulnessRank={helpfulness} />
       <AnswersList answers={answers} />
-      <button type="button">Add an answer</button>
+      <ReactModal
+        isOpen={showAddA}
+        onRequestClose={toggleShowAddA}
+        appElement={document.querySelector('#app')}
+      >
+        <h1>Submit your Answer</h1>
+        <h3>
+          About the
+          {`Show Current Body and ${body} Change me once current product has a centralized state`}
+        </h3>
+        <NewQAForm parentId={id} parentType="Answer" />
+        <button type="button" onClick={toggleShowAddA}>Go Back</button>
+      </ReactModal>
+      <button type="button" onClick={toggleShowAddA}>Add an answer</button>
       <button type="button">Show more answers</button>
     </div>
   );

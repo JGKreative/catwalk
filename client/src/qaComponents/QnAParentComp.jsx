@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import fetchQuestions from './ApiController';
+import NewQAForm from './NewQAForm';
 
 const QnAParentComp = () => {
   const [allQuestions, setAllQuestions] = useState();
@@ -51,7 +52,6 @@ const QnAParentComp = () => {
     );
   }
 
-  console.log(document.querySelector('#app'));
   return (
 
     <div id="qna">
@@ -72,8 +72,13 @@ const QnAParentComp = () => {
         onRequestClose={toggleDisplayAddQ}
         appElement={document.querySelector('#app')}
       >
-        <p>Add a Questions</p>
-        <button type="button" onClick={toggleDisplayAddQ}>Close Modal</button>
+        <h1>Ask Your Question</h1>
+        <h3>
+          About the
+          {`${currentProduct} Change me once current product has a centralized state`}
+        </h3>
+        <NewQAForm parentId={currentProduct} parentType="Question" />
+        <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       <button type="button">Show more questions</button>
       <button type="button" onClick={testUpdate}>TEMP BUTTON to test Update!!!</button>
