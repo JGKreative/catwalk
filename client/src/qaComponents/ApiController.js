@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import authToken from '../../../authToken.js';
 
 const compareHelpfulness = (a, b) => {
   if (a.question_helpfulness < b.question_helpfulness) {
