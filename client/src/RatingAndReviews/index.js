@@ -8,7 +8,8 @@ import StarRating from './StarRating';
 import Helpful from './Helpful';
 import fakeData from './fakeData';
 import ApiController from './ApiController';
+import Breakdown from './Breakdown';
 
 module.exports = {
-  Wrapper, /*AddReviewForm, RatingsBreakdown,*/ ReviewsList, Review, SortOptions, StarRating, Helpful, fakeData, ApiController,
+  Wrapper, /*AddReviewForm, RatingsBreakdown,*/ ReviewsList, Review, SortOptions, StarRating, Helpful, Breakdown, fakeData, ApiController,
 };

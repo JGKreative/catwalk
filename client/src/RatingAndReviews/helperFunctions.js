@@ -47,6 +47,7 @@ module.exports = {
         numberOfRatings += value;
       }
     };
-    return (total / numberOfRatings).toFixed(2);
+    const avg = (total / numberOfRatings).toFixed(2)
+    return Math.round(avg * 10) / 10;
   },
 };
