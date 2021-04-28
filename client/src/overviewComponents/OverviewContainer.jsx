@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
 import SampleData from './SampleData';
+import api from './ApiController';
 
 // const data = SampleData;
 const { product, productStyles } = SampleData;
+const allProducts = api.fetchAllProducts(() => console.log(response.data));
+
 
 const OverviewContainer = () => {
   const [currentStyle, setStyle] = useState(productStyles.results[0]);

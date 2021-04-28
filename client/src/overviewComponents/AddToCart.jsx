@@ -3,32 +3,30 @@ import React, { useState } from 'react';
 
 // import ProductDetailWrapper from './productDetailWrapper.jsx';
 
-const AddToCart = ({ sizes }) => {
-  const [quantity, setQuantity] = useState(Object.values(sizes)[0].quantity);
+const AddToCart = ({ skus }) => {
+  const [selectedSku, setSelectedSku] = useState(Object.values(skus)[0]);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [availQuantity, setAvailQuantity] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(null);
 
-  const getSizeQuantity = (event) => {
-    Object.values(sizes).forEach((item) => {
-      if (item.size === event.target.value) {
-        setQuantity(item.quantity);
+  const generateQuantityOption = () => {
+    Object.values(skus).forEach((sku) => {
+      if (sku.size === selectedSize) {
+        setAvailQuantity(sku.quantity);
       }
     });
   };
 
   return (
     <div>
-      <select id="size-select" onChange={() => { getSizeQuantity(); }}>
+      <select id="size-select" onChange={(event) => { setSelectedSize(event.target.value); generateQuantityOption(); }}>
         <option>SELECT SIZE</option>
-        {Object.values(sizes).map((item) => (
-          <option
-            // id={find item key name}
-            value={item.size}
-          >
-            {item.size}
-          </option>
+        {Object.values(skus).map((sku) => (
+          <option value={sku.size}>{sku.size}</option>
         ))}
       </select>
       <select id="quantity-select">
-        {[...Array(quantity)].map((item, index) => (
+        {[...Array(availQuantity)].slice(0, 15).map((item, index) => (
           <option>{index + 1}</option>
         ))}
       </select>

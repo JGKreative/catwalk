@@ -6,7 +6,7 @@ import AddToCart from './AddToCart';
 // import sampleData from './sampleData';
 
 const ProductInformation = ({
-  category, title, price, styles,
+  category, title, price, styles, setStyle,
 }) => (
   // dynamically render title and price
   <div>
@@ -17,8 +17,8 @@ const ProductInformation = ({
       <h1>{title}</h1>
       <span>{price}</span>
     </section>
-    <Styles styles={styles} />
-    <AddToCart sizes={styles[0].skus} />
+    <Styles styles={styles} setStyle={setStyle} />
+    <AddToCart skus={styles[0].skus} />
   </div>
 );
 
