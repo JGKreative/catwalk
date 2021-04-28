@@ -1,13 +1,21 @@
 import React, { useState, useEffect, createContext } from 'react';
+import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import fetchQuestions from './ApiController';
+import NewQAForm from './NewQAForm';
 
 const QnAParentComp = () => {
   const [allQuestions, setAllQuestions] = useState();
   const [currentProduct, changeCurrentProduct] = useState(20100);
   const [searchTerm, setSearchTerm] = useState('');
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
+  const [displayAddQ, setDisplayAddQ] = useState(false);
+
+  const toggleDisplayAddQ = (event) => {
+    event.preventDefault();
+    setDisplayAddQ(!displayAddQ);
+  };
 
   const updateQuestions = (productId) => {
     fetchQuestions(productId, setAllQuestions);
@@ -46,8 +54,9 @@ const QnAParentComp = () => {
 
   return (
 
-    <div>
+    <div id="qna">
       Questions:
+
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -57,7 +66,20 @@ const QnAParentComp = () => {
         refreshQuestions={() => { updateQuestions(currentProduct); }}
       />
       <QuestionsList questions={allQuestions} />
-      <button type="button">Ask a question</button>
+      <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
+      <ReactModal
+        isOpen={displayAddQ}
+        onRequestClose={toggleDisplayAddQ}
+        appElement={document.querySelector('#app')}
+      >
+        <h1>Ask Your Question</h1>
+        <h3>
+          About the
+          {`${currentProduct} Change me once current product has a centralized state`}
+        </h3>
+        <NewQAForm parentId={currentProduct} parentType="Question" closeOnSubmit={toggleDisplayAddQ} />
+        <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
+      </ReactModal>
       <button type="button">Show more questions</button>
       <button type="button" onClick={testUpdate}>TEMP BUTTON to test Update!!!</button>
     </div>
