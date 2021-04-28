@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
+import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import fetchQuestions from './ApiController';
@@ -8,6 +9,12 @@ const QnAParentComp = () => {
   const [currentProduct, changeCurrentProduct] = useState(20100);
   const [searchTerm, setSearchTerm] = useState('');
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
+  const [displayAddQ, setDisplayAddQ] = useState(false);
+
+  const toggleDisplayAddQ = (event) => {
+    event.preventDefault();
+    setDisplayAddQ(!displayAddQ);
+  };
 
   const updateQuestions = (productId) => {
     fetchQuestions(productId, setAllQuestions);
@@ -44,10 +51,12 @@ const QnAParentComp = () => {
     );
   }
 
+  console.log(document.querySelector('#app'));
   return (
 
-    <div>
+    <div id="qna">
       Questions:
+
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -57,7 +66,15 @@ const QnAParentComp = () => {
         refreshQuestions={() => { updateQuestions(currentProduct); }}
       />
       <QuestionsList questions={allQuestions} />
-      <button type="button">Ask a question</button>
+      <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
+      <ReactModal
+        isOpen={displayAddQ}
+        onRequestClose={toggleDisplayAddQ}
+        appElement={document.querySelector('#app')}
+      >
+        <p>Add a Questions</p>
+        <button type="button" onClick={toggleDisplayAddQ}>Close Modal</button>
+      </ReactModal>
       <button type="button">Show more questions</button>
       <button type="button" onClick={testUpdate}>TEMP BUTTON to test Update!!!</button>
     </div>
