@@ -1,5 +1,4 @@
 import axios from 'axios';
-import authToken from '../../../authToken.js';
 
 const compareHelpfulness = (a, b) => {
   if (a.question_helpfulness < b.question_helpfulness) {
@@ -12,8 +11,7 @@ const compareHelpfulness = (a, b) => {
 }
 
 const fetchQuestions = (productId, callback) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/qa/questions', {
-    headers: authToken,
+  axios.get('/qna/allQuestions', {
     params: {
       product_id: productId,
     },
