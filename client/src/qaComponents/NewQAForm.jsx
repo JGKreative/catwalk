@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-const NewQAForm = ({parentId, parentType }) => {
+const NewQAForm = ({parentId, parentType, closeOnSubmit }) => {
   const [newQuestion, setNewQuestion] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
 
   const handleChange = (setFunc, event) => {
     setFunc(event.target.value);
-    console.log(`changed to ${event.target.value}`);
   };
 
   const submitForm = (event) => {
@@ -15,6 +14,10 @@ const NewQAForm = ({parentId, parentType }) => {
     console.log(`eventually I will submit type ${parentType} and id ${parentId} to the API`);
     console.log('remember to create error handling for me!!!');
     console.log('you can send my data from state:', newQuestion, nickname, email);
+    setNewQuestion('');
+    setNickname('');
+    setEmail('');
+    closeOnSubmit();
   };
 
   return (
@@ -22,20 +25,21 @@ const NewQAForm = ({parentId, parentType }) => {
       Your
       {parentType}
       <br />
-      <input id="newQBody" value={newQuestion} onChange={(event) => { handleChange(setNewQuestion, event); }} maxLength="1000" placeholder="Example: Why did you like the product or not?" />
+      <input id="newQBody" value={newQuestion} onChange={(event) => { handleChange(setNewQuestion, event); }} maxLength="1000" placeholder="Example: Why did you like it or not?" />
+      <br />
       What is your nickname
       <br />
-      <input id="newQNickname" value={nickname} onChange={(event) => { handleChange(setNickname, event); }} maxLength="60" placeholder="Example: jackson11!" />
+      <input id="newQNickname" value={nickname} onChange={(event) => { handleChange(setNickname, event); }} maxLength="60" placeholder="jack543!" />
       <br />
       For privacy reasons, do not use your full name or email address
       <br />
       Your email
       <br />
-      <input id="newQEmail" value={email} onChange={(event) => { handleChange(setEmail, event); }} maxLength="60" placeholder="Example: jackson11@example.com" />
+      <input id="newQEmail" value={email} onChange={(event) => { handleChange(setEmail, event); }} maxLength="60" placeholder="jack@email.com" />
       <br />
       For authentication reasons, you will not be emailed
       <br />
-      <button type="submit">Submit Question</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };
