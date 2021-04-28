@@ -8,7 +8,7 @@ const App = () => (
   <div>
     <OverviewContainer />
     <RatingsAndReviewsService />
-    {/* <QnA /> */}
+    <QnA />
   </div>
 );
 
