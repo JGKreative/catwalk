@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Review from './Review';
-import { sortByHelpful, sortByNewest } from './helperFunctions';
+import { sortByHelpful, sortByNewest, sortByRelevant } from './helperFunctions';
 
 const ReviewsList = ({ data, sortBy }) => {
 
@@ -18,10 +18,8 @@ const ReviewsList = ({ data, sortBy }) => {
   if (sortBy === 'helpfulness') {
     sortedReviews = sortByHelpful(reviews);
   };
-  sortedReviews.forEach(r => {
-    console.log(r.props.review.date)});
-
-
+  // sortedReviews.forEach(r => {
+  //   console.log(r.props.review.date)});
 
 
   const [reviewsShowing, setReviewsShowing] = useState(2);
