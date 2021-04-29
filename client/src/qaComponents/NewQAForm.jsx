@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { submitNewQA } from './ApiController';
 
-const NewQAForm = ({parentId, parentType, closeOnSubmit }) => {
+const NewQAForm = ({
+  parentId, parentType, closeOnSubmit, updateQuestions,
+}) => {
   const [newQuestion, setNewQuestion] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -11,9 +14,8 @@ const NewQAForm = ({parentId, parentType, closeOnSubmit }) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log(`eventually I will submit type ${parentType} and id ${parentId} to the API`);
     console.log('remember to create error handling for me!!!');
-    console.log('you can send my data from state:', newQuestion, nickname, email);
+    submitNewQA(parentType, newQuestion, nickname, email, parentId, updateQuestions);
     setNewQuestion('');
     setNickname('');
     setEmail('');
