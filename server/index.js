@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-const qnaRouter = require('./qnaRouter.js');
+// const qnaRouter = require('./qnaRouter.js');
 const morgan = require('morgan'); /* <-- middleware */
 
 const app = express();
