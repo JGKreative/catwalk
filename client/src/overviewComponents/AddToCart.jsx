@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const AddToCart = ({ skus }) => {
   // const [selectedSku, setSelectedSku] = useState(Object.values(skus)[0]); //for use with cart
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('SELECT SIZE');
   const [availQuantity, setAvailQuantity] = useState(null);
   // const [selectedQuantity, setSelectedQuantity] = useState(null); //for use with cart
 
@@ -23,9 +23,11 @@ const AddToCart = ({ skus }) => {
         ))}
       </select>
       <select id="quantitySelect">
-        {[...Array(availQuantity)].slice(0, 15).map((item, index) => (
-          <option key={item} value={index + 1}>{index + 1}</option>
-        ))}
+        {selectedSize === 'SELECT SIZE'
+          ? <option>-</option>
+          : [...Array(availQuantity)].slice(0, 15).map((item, index) => (
+            <option key={item} value={index + 1}>{index + 1}</option>
+          ))}
       </select>
       <button
         type="button"
