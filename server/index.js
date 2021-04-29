@@ -23,8 +23,8 @@ app.use((req, res, next) => {
 //------------------------------------------------------//
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
-// app.use('/qna', qnaRouter);
-
+app.use('/qna', qnaRouter);
+//app.use('/otherModuleEndPoints', otherModuleRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running and listening at localhost:${PORT}`);
