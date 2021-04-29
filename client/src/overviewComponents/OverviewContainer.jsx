@@ -2,20 +2,17 @@ import React, { useState } from 'react';
 import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
 import SampleData from './SampleData';
-// import api from './ApiController';
+// import api from './ApiController'; // for using api data
 
-// const data = SampleData;
 const { product, productStyles } = SampleData;
-// const allProducts = api.fetchAllProducts(() => console.log(response.data));
+// const allProducts = api.fetchAllProducts(() => console.log(response.data)); // for using api data
 
 const OverviewContainer = () => {
-  const [styles, setStyles] = useState(productStyles.results);
+  const [styles] = useState(productStyles.results);
   const [currentStyle, setStyle] = useState(styles[0]);
-  // const [imageGallery, setImageGallery] = useState(currentStyle);
 
   const updateImageGallery = (newStyle) => {
     setStyle(newStyle);
-    console.log('new current style ->', currentStyle);
   };
 
   const getTruePrice = () => {

@@ -3,14 +3,11 @@ import React from 'react';
 import StarRating from '../RatingAndReviews/StarRating';
 import Styles from './Styles';
 import AddToCart from './AddToCart';
-// import sampleData from './sampleData';
 
 const ProductInformation = ({
-  category, title, price, styles, updateImageGallery
+  category, title, price, styles, updateImageGallery,
 }) => (
-  // dynamically render title and price
   <div>
-    {/* <ReviewStars /> */}
     <StarRating />
     <h3>{category}</h3>
     <section className="name-price">
