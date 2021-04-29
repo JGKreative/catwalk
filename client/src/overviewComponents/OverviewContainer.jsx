@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
 import SampleData from './SampleData';
+// import api from './ApiController';
 
 // const data = SampleData;
 const { product, productStyles } = SampleData;
+// const allProducts = api.fetchAllProducts(() => console.log(response.data));
 
 const OverviewContainer = () => {
-  const [currentStyle, setStyle] = useState(productStyles.results[0]);
+  const [styles, setStyles] = useState(productStyles.results);
+  const [currentStyle, setStyle] = useState(styles[0]);
+  // const [imageGallery, setImageGallery] = useState(currentStyle);
+
+  const updateImageGallery = (newStyle) => {
+    setStyle(newStyle);
+    console.log('new current style ->', currentStyle);
+  };
 
   const getTruePrice = () => {
     if (currentStyle.sale_price) {
@@ -30,8 +39,9 @@ const OverviewContainer = () => {
         category={product.category}
         title={product.name}
         price={currentPrice}
-        styles={productStyles.results}
+        styles={styles}
         setStyle={setStyle}
+        updateImageGallery={updateImageGallery}
       />
     </div>
   );
