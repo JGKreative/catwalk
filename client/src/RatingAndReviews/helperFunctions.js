@@ -50,4 +50,20 @@ module.exports = {
     const avg = (total / numberOfRatings).toFixed(2)
     return Math.round(avg * 10) / 10;
   },
+  calculateAvgRecommended: function(data) {
+    let total = 0;
+    let trueTotal;
+
+    for (const key in data) {
+      let value = parseInt(data[key])
+      total += value;
+      if (key === 'true') {
+        trueTotal = value;
+      }
+    }
+    const avg = (trueTotal / total).toFixed(2);
+    return Math.round(avg * 100);
+  },
+
+
 };

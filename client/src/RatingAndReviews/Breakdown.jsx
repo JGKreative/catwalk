@@ -13,7 +13,7 @@ const chartOptions = {
   options: {
     chart: {
       type: 'bar',
-      height: 350,
+      height: 250,
       stacked: true,
       stackType: '100%'
     },
@@ -21,28 +21,33 @@ const chartOptions = {
       bar: {
         horizontal: true,
       },
+      // dataLabels: {
+      //   enabled: false
+      // },
     },
-    stroke: {
-      width: 1,
-      colors: ['#fff']
-    },
+    colors: ['#05e33c', '#9e9e9e'],
+    // stroke: {
+    //   width: 1,
+    //   colors: ['#fff']
+    // },
     title: {
       text: 'Ratings Breakdown'
     },
     xaxis: {
       categories: ['5 stars', '4 stars', '3 stars', '2 stars', '1 stars'],
     },
+    yaxis: {
+
+    },
     tooltip: {
-      y: {
-        formatter: function (val) {
-          return val
-        }
-      }
+      enabled: false
     },
     fill: {
       opacity: 1
-
     },
+    legend: {
+      show: false
+    }
   },
 }
 
@@ -54,9 +59,8 @@ const Breakdown = () => {
         options={chartOptions.options}
         series={chartOptions.series}
         type="bar"
-        height="350"
-        width="350"
-        legend="null"
+        height="250"
+        width="300"
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRating from './StarRating';
-import { calculateAvgRating } from './helperFunctions';
+import { calculateAvgRating, calculateAvgRecommended } from './helperFunctions';
 import Breakdown from './Breakdown';
 
 const RatingsBreakdown = ({ data }) => {
@@ -10,7 +10,8 @@ const RatingsBreakdown = ({ data }) => {
   console.log('recommended:', recommended);
   console.log('characteristics:', characteristics);
 
-  const averageRating = calculateAvgRating(ratings)
+  const averageRating = calculateAvgRating(ratings);
+  const averageRecommended = calculateAvgRecommended(recommended);
 
   return (
     <div className="ratings-breakdown-main">
@@ -21,8 +22,10 @@ const RatingsBreakdown = ({ data }) => {
           <StarRating rating={averageRating} />
         </span>
       </div>
-      <p> Rating Breakdown: </p>
       <Breakdown />
+      <div>
+      {averageRecommended}% of reviews recommend this product
+      </div>
       <div>_____________________________</div>
     </div>
 
