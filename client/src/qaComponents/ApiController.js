@@ -34,7 +34,7 @@ export const submitNewQA = (type, newQuestion, nickname, email, parentId, cb) =>
     email,
   }
 
-  axios.post('/qna/newQA', {
+  axios.post('/qna', {
     formData: formData,
     type,
     parentId,
@@ -46,4 +46,18 @@ export const submitNewQA = (type, newQuestion, nickname, email, parentId, cb) =>
   .catch((err) => {
     console.log('error posting new Q/A', err);
   })
+}
+
+export const reporthelpful = (type, id, action, cb = ()=>{}) => {
+  //type should be 'answers' or 'questions'
+  //action should be 'report' or 'helpful'
+
+  axios.put(`/qna/${type}/${id}/${action}`)
+    .then((result) => {
+      console.log(`successfully did ${action} to API for ${type} ${id}`, result.data);
+      cb();
+    })
+    .catch((error) => {
+      console.log(`error doing ${action} to API for ${type} ${id}`, error);
+    });
 }

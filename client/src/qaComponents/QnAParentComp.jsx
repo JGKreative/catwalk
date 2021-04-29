@@ -13,8 +13,7 @@ const QnAParentComp = () => {
   const [displayAddQ, setDisplayAddQ] = useState(false);
   const currentProduct = useContext(appContext);
 
-  const toggleDisplayAddQ = (event) => {
-    event.preventDefault();
+  const toggleDisplayAddQ = () => {
     setDisplayAddQ(!displayAddQ);
   };
 
