@@ -15,7 +15,7 @@ const ProductInformation = ({
       <span>{price}</span>
     </section>
     <Styles styles={styles} updateImageGallery={updateImageGallery} />
-    <AddToCart skus={styles[0].skus} />
+    <AddToCart skus={Object.values(styles[0].skus)} />
   </div>
 );
 

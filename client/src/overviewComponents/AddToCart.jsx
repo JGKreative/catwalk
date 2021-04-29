@@ -1,33 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AddToCart = ({ skus }) => {
-  // const [selectedSku, setSelectedSku] = useState(Object.values(skus)[0]); //for use with cart
   const [selectedSize, setSelectedSize] = useState('SELECT SIZE');
   const [availQuantity, setAvailQuantity] = useState(null);
-  // const [selectedQuantity, setSelectedQuantity] = useState(null); //for use with cart
 
-  const generateQuantityOption = () => {
-    Object.values(skus).forEach((sku) => {
+  useEffect(() => {
+    skus.forEach((sku) => {
       if (sku.size === selectedSize) {
         setAvailQuantity(sku.quantity);
       }
     });
+  });
+
+  const generateSizeOptions = () => skus.map((sku, index) => (
+    // update key names
+    <option key={sku.size + index} value={sku.size}>{sku.size}</option>
+  ));
+
+  const generateQuantityOptions = () => {
+    if (selectedSize === 'SELECT SIZE') {
+      return <option>-</option>;
+    }
+    if (!availQuantity) {
+      return <option>OUT OF STOCK</option>;
+    }
+    return [...Array(availQuantity)].slice(0, 15).map((item, index) => (
+      // update key names
+      <option key={item + '-' + index} value={index + 1}>{index + 1}</option>
+    ));
   };
 
   return (
     <div>
-      <select id="sizeSelect" onChange={(event) => { setSelectedSize(event.target.value); generateQuantityOption(); }}>
+      <select id="sizeSelect" onChange={(event) => { setSelectedSize(event.target.value); }}>
         <option>SELECT SIZE</option>
-        {Object.values(skus).map((sku) => (
-          <option key={sku.size} value={sku.size}>{sku.size}</option>
-        ))}
+        {generateSizeOptions()}
       </select>
       <select id="quantitySelect">
-        {selectedSize === 'SELECT SIZE'
-          ? <option>-</option>
-          : [...Array(availQuantity)].slice(0, 15).map((item, index) => (
-            <option key={item} value={index + 1}>{index + 1}</option>
-          ))}
+        {generateQuantityOptions()}
       </select>
       <button
         type="button"
