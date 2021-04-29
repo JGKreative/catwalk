@@ -38,7 +38,7 @@ const Question = ({ question }) => {
           About the
           {`Show Current Body and ${body} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={id} parentType="Answer" closeOnSubmit={toggleShowAddA} />
+        <NewQAForm parentId={id} parentType="answer" closeOnSubmit={toggleShowAddA} />
         <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
       <button type="button" onClick={toggleShowAddA}>Add an answer</button>

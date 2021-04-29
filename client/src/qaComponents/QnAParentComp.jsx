@@ -1,11 +1,12 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
-import fetchQuestions from './ApiController';
 import NewQAForm from './NewQAForm';
+import { fetchQuestions } from './ApiController';
 
 const QnAParentComp = () => {
+  // ------STATE-----
   const [allQuestions, setAllQuestions] = useState();
   const [currentProduct, changeCurrentProduct] = useState(20100);
   const [searchTerm, setSearchTerm] = useState('');
@@ -77,7 +78,7 @@ const QnAParentComp = () => {
           About the
           {`${currentProduct} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="Question" closeOnSubmit={toggleDisplayAddQ} />
+        <NewQAForm parentId={currentProduct} parentType="question" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       <button type="button">Show more questions</button>
