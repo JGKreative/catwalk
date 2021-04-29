@@ -341,7 +341,7 @@ const reviewsForProductId20101 = {
       "body": "heywhat;kjdf lkasdkfjlasd;fkljadsfjjdasfa;sdlfkjlkj",
       "date": "2021-03-11T00:00:00.000Z",
       "reviewer_name": "what",
-      "helpfulness": 0,
+      "helpfulness": 90,
       "photos": [
         {
           "id": 496658,
