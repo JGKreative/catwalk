@@ -81,7 +81,7 @@ const SampleData = {
                 },
                 "638236": {
                     "quantity": 4,
-                    "size": "XL"
+                    "size": "XXL"
                 }
             }
         },
