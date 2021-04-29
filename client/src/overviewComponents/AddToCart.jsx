@@ -19,15 +19,15 @@ const AddToCart = ({ skus }) => {
 
   return (
     <div>
-      <select id="size-select" onChange={(event) => { setSelectedSize(event.target.value); generateQuantityOption(); }}>
+      <select id="sizeSelect" onChange={(event) => { setSelectedSize(event.target.value); generateQuantityOption(); }}>
         <option>SELECT SIZE</option>
         {Object.values(skus).map((sku) => (
           <option value={sku.size}>{sku.size}</option>
         ))}
       </select>
-      <select id="quantity-select">
+      <select id="quantitySelect">
         {[...Array(availQuantity)].slice(0, 15).map((item, index) => (
-          <option>{index + 1}</option>
+          <option value={index + 1}>{index + 1}</option>
         ))}
       </select>
       <button
