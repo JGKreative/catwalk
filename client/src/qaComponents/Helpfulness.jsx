@@ -10,7 +10,6 @@ const Helpfulness = ({ parentId, helpfulnessRank, parentType }) => {
   };
 
   const submitReport = () => {
-    console.log('THIS IS TYPE BEFORE SUBMITTING REPORT!!!', parentType);
     setReported(true);
     reporthelpful(parentType, parentId, 'report');
   };
