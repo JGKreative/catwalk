@@ -18,9 +18,6 @@ const ReviewsList = ({ data, sortBy, toggleModal }) => {
   if (sortBy === 'helpfulness') {
     sortedReviews = sortByHelpful(reviews);
   };
-  // sortedReviews.forEach(r => {
-  //   console.log(r.props.review.date)});
-
 
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const displayReviews = sortedReviews.slice(0, reviewsShowing);

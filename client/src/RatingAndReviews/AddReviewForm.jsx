@@ -56,11 +56,6 @@ const AddReviewForm = () => {
   const [nickname, setNickname] = useState(null);
   const [email, setEmail] = useState(null);
   console.log('ratingSelected:', ratingSelected)
-  // console.log('recommend:', recommend)
-  // console.log('nickname:', nickname)
-  // console.log('summary:', summary)
-  // console.log('body:', body)
-  // console.log('email:', email)
 
   const handleChange = (setFunc, e) => {
     setFunc(e.target.value);
