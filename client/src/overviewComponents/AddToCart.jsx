@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 const AddToCart = ({ skus }) => {
   const [selectedSize, setSelectedSize] = useState('SELECT SIZE');
   const [availQuantity, setAvailQuantity] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(null);
+  // const [cart, setCart] = useState({ style: null, size: null, quantity: null });
 
+  // if constant updating issues arise, may need to pass in sku as an array
   useEffect(() => {
     skus.forEach((sku) => {
       if (sku.size === selectedSize) {
@@ -16,6 +19,12 @@ const AddToCart = ({ skus }) => {
     // update key names
     <option key={sku.size + index} value={sku.size}>{sku.size}</option>
   ));
+
+  const handleAddToCart = () => {
+    if (selectedSize === 'SELECT SIZE') {
+      return
+    }
+  }
 
   const generateQuantityOptions = () => {
     if (selectedSize === 'SELECT SIZE') {
@@ -36,7 +45,7 @@ const AddToCart = ({ skus }) => {
         <option>SELECT SIZE</option>
         {generateSizeOptions()}
       </select>
-      <select id="quantitySelect">
+      <select id="quantitySelect" onChange={(event) => { setSelectedQuantity(Number(event.target.value)); }}>
         {generateQuantityOptions()}
       </select>
       <button
