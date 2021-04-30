@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
-// import
+import React, { useState, useEffect } from 'react';
 
-// import ProductDetailWrapper from './productDetailWrapper.jsx';
+const AddToCart = ({ skus }) => {
+  const [selectedSize, setSelectedSize] = useState('SELECT SIZE');
+  const [availQuantity, setAvailQuantity] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(null);
+  // const [cart, setCart] = useState({ style: null, size: null, quantity: null });
 
-const AddToCart = ({ sizes }) => {
-  const [quantity, setQuantity] = useState(Object.values(sizes)[0].quantity);
-
-  const getSizeQuantity = (event) => {
-    Object.values(sizes).forEach((item) => {
-      if (item.size === event.target.value) {
-        setQuantity(item.quantity);
+  // if constant updating issues arise, may need to pass in sku as an array
+  useEffect(() => {
+    skus.forEach((sku) => {
+      if (sku.size === selectedSize) {
+        setAvailQuantity(sku.quantity);
       }
     });
+  });
+
+  const generateSizeOptions = () => skus.map((sku, index) => (
+    // update key names
+    <option key={sku.size + index} value={sku.size}>{sku.size}</option>
+  ));
+
+  const handleAddToCart = () => {
+    if (selectedSize === 'SELECT SIZE') {
+      return
+    }
+  }
+
+  const generateQuantityOptions = () => {
+    if (selectedSize === 'SELECT SIZE') {
+      return <option>-</option>;
+    }
+    if (!availQuantity) {
+      return <option>OUT OF STOCK</option>;
+    }
+    return [...Array(availQuantity)].slice(0, 15).map((item, index) => (
+      // update key names
+      <option key={item + '-' + index} value={index + 1}>{index + 1}</option>
+    ));
   };
 
   return (
     <div>
-      <select id="size-select" onChange={() => { getSizeQuantity(); }}>
+      <select id="sizeSelect" onChange={(event) => { setSelectedSize(event.target.value); }}>
         <option>SELECT SIZE</option>
-        {Object.values(sizes).map((item) => (
-          <option
-            // id={find item key name}
-            value={item.size}
-          >
-            {item.size}
-          </option>
-        ))}
+        {generateSizeOptions()}
       </select>
-      <select id="quantity-select">
-        {[...Array(quantity)].map((item, index) => (
-          <option>{index + 1}</option>
-        ))}
+      <select id="quantitySelect" onChange={(event) => { setSelectedQuantity(Number(event.target.value)); }}>
+        {generateQuantityOptions()}
       </select>
       <button
         type="button"

@@ -1,19 +1,19 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
-import fetchQuestions from './ApiController';
 import NewQAForm from './NewQAForm';
+import { fetchQuestions } from './ApiController';
+import appContext from '../appContext';
 
 const QnAParentComp = () => {
   const [allQuestions, setAllQuestions] = useState();
-  const [currentProduct, changeCurrentProduct] = useState(20100);
   const [searchTerm, setSearchTerm] = useState('');
   const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [displayAddQ, setDisplayAddQ] = useState(false);
+  const currentProduct = useContext(appContext);
 
-  const toggleDisplayAddQ = (event) => {
-    event.preventDefault();
+  const toggleDisplayAddQ = () => {
     setDisplayAddQ(!displayAddQ);
   };
 
@@ -38,10 +38,6 @@ const QnAParentComp = () => {
     setAllQuestions(newDisplay);
   };
 
-  const testUpdate = () => {
-    changeCurrentProduct(20101);
-  };
-
   useEffect(() => {
     updateQuestions(currentProduct);
   }, [currentProduct]);
@@ -53,10 +49,8 @@ const QnAParentComp = () => {
   }
 
   return (
-
     <div id="qna">
       Questions:
-
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -77,11 +71,10 @@ const QnAParentComp = () => {
           About the
           {`${currentProduct} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="Question" closeOnSubmit={toggleDisplayAddQ} />
+        <NewQAForm parentId={currentProduct} parentType="question" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       <button type="button">Show more questions</button>
-      <button type="button" onClick={testUpdate}>TEMP BUTTON to test Update!!!</button>
     </div>
   );
 };

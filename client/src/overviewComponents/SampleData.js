@@ -64,7 +64,7 @@ const SampleData = {
                     "size": "XS"
                 },
                 "638232": {
-                    "quantity": 16,
+                    "quantity": 0,
                     "size": "S"
                 },
                 "638233": {
@@ -81,7 +81,7 @@ const SampleData = {
                 },
                 "638236": {
                     "quantity": 4,
-                    "size": "XL"
+                    "size": "XXL"
                 }
             }
         },

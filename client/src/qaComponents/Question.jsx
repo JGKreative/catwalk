@@ -15,6 +15,9 @@ const Question = ({ question }) => {
   } = question;
 
   const [showAddA, setShowAddA] = useState(false);
+  const tempFuncForPropDrilling = () => {
+    console.log('create a QA context for API controls and add update answers req here to refresh after submit without needed to prop drill the func');
+  };
 
   const toggleShowAddA = () => {
     setShowAddA(!showAddA);
@@ -38,7 +41,7 @@ const Question = ({ question }) => {
           About the
           {`Show Current Body and ${body} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={id} parentType="Answer" closeOnSubmit={toggleShowAddA} />
+        <NewQAForm parentId={id} parentType="answer" closeOnSubmit={toggleShowAddA} updateQuestions={tempFuncForPropDrilling} />
         <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
       <button type="button" onClick={toggleShowAddA}>Add an answer</button>

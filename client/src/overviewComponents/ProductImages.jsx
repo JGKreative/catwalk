@@ -1,6 +1,5 @@
 import React from 'react';
 import ImageGallery from './ImageGallery';
-// import ProductDetailWrapper from './productDetailWrapper.jsx';
 
 const ProductImages = ({ images, styleId }) => (
   <div>
