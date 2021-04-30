@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
 const Styles = ({ styles, updateImageGallery }) => {
-  const [availStyles, setAvailStyles] = useState(styles);
-  const [currentStyle, setCurrentStyle] = useState(availStyles[0]);
+  const [currentStyle] = useState(styles[0]);
 
   return (
     <div id="product-styles">
       <h3 id="product-style-name" data-value="">{currentStyle.name}</h3>
       <ul>
-        {availStyles.map((style) => (
-          <li>
-            <button onClick={() => { updateImageGallery(style); console.log('new styles ->', style); }} type="button">
+        {styles.map((style) => (
+          <li key={style.style_id}>
+            <button type="button" onClick={() => { updateImageGallery(style); }}>
               <img
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
