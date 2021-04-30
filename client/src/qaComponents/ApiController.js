@@ -18,7 +18,7 @@ export const fetchQuestions = (productId, callback) => {
     },
   })
   .then((response) => {
-    console.log('response from request------>', response.data.results)
+    console.log('response from request for all questions------>', response.data.results)
     const QuestionsSortedByHelpfulness = response.data.results.sort(compareHelpfulness);
     callback(QuestionsSortedByHelpfulness);
   })

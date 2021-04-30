@@ -71,7 +71,7 @@ const QnAParentComp = () => {
           About the
           {`${currentProduct} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="question" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
+        <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       <button type="button">Show more questions</button>
