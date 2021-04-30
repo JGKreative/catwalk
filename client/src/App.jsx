@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import OverviewContainer from './overviewComponents/OverviewContainer';
 import QnA from './qaComponents/QnAParentComp';
 import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
+import appContext from './appContext';
 
-const App = () => (
-  <div id="app">
-    <OverviewContainer />
-    <RatingsAndReviewsService />
-    <QnA />
-  </div>
-);
+const App = () => {
+  const [currentProduct, changeCurrentProduct] = useState(20100);
+  const testUpdate = () => {
+    changeCurrentProduct(currentProduct + 1);
+  };
+  console.log('--------Current Product is:', currentProduct, '------------');
+
+  return (
+    <appContext.Provider value={currentProduct} id="app">
+      <button type="button" onClick={testUpdate}>Test Current Product Change</button>
+      <OverviewContainer />
+      <RatingsAndReviewsService />
+      <QnA />
+    </appContext.Provider>
+  );
+};
 
 export default App;
