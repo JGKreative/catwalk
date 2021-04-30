@@ -13,8 +13,8 @@ const App = () => {
 
   return (
     <appContext.Provider value={currentProduct} id="app">
-      {/* <button type="button" onClick={testUpdate}>Test Current Product Change</button> */}
-      {/* <OverviewContainer /> */}
+      <button type="button" onClick={testUpdate}>Test Current Product Change</button>
+      <OverviewContainer />
       <RatingsAndReviewsService />
       <QnA />
     </appContext.Provider>
