@@ -64,7 +64,7 @@ const SampleData = {
                     "size": "XS"
                 },
                 "638232": {
-                    "quantity": 16,
+                    "quantity": 0,
                     "size": "S"
                 },
                 "638233": {
