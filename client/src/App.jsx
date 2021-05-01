@@ -2,17 +2,26 @@ import React, { useState } from 'react';
 import OverviewContainer from './overviewComponents/OverviewContainer';
 import QnA from './qaComponents/QnAParentComp';
 import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
-import appContext from './appContext';
+import { appContext } from './appContext';
 
 const App = () => {
-  const [currentProduct, changeCurrentProduct] = useState(20101);
+  const [productId, changeProductId] = useState(20100);
+  const [productName, setProductName] = useState('[Current Product Name Here]');
+  const [productDescription, setProductDescription] = useState('[Current Product Description Here]');
+
   const testUpdate = () => {
-    changeCurrentProduct(currentProduct + 1);
+    changeProductId(productId + 1);
   };
-  console.log('--------Current Product is:', currentProduct, '------------');
+  console.log('--------Current Product ID is:', productId, '------------');
+
+  const contextExport = {
+    productId,
+    productName,
+    productDescription,
+  };
 
   return (
-    <appContext.Provider value={currentProduct} id="app">
+    <appContext.Provider value={contextExport} id="app">
       <button type="button" onClick={testUpdate}>Test Current Product Change</button>
       <OverviewContainer />
       <RatingsAndReviewsService />

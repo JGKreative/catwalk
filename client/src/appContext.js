@@ -1,5 +1,11 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 const appContext = createContext();
 
-export default appContext;
+const contextDataRetriever = () => {
+  const data = useContext(appContext);
+  return data;
+};
+
+export { appContext, contextDataRetriever };
+export default contextDataRetriever;

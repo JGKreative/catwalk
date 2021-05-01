@@ -1,65 +1,115 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import NewQAForm from './NewQAForm';
 import { fetchQuestions } from './ApiController';
-import appContext from '../appContext';
+import centralState from '../appContext';
 
 const QnAParentComp = () => {
+  //--------------------------------------------------
+  // State:
   const [allQuestions, setAllQuestions] = useState();
+  const [qDisplayMax, setQDisplayMax] = useState(4);
+  const [displayQuestions, setDisplayQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [displayAddQ, setDisplayAddQ] = useState(false);
-  const currentProduct = useContext(appContext);
+  const { productId, productName, productDescription } = centralState();
+
+  const displaySearchResults = (searchTerm.length >= 3);
+
+  //-----------------------------------------------------------------
+  // Helper Funcs
+  const searchTermMatch = ({ question_body: question }) => {
+    const lowerCaseSearch = searchTerm.toLowerCase();
+    const lowerCaseQuestion = question.toLowerCase();
+    return (lowerCaseQuestion.includes(lowerCaseSearch));
+  };
 
   const toggleDisplayAddQ = () => {
     setDisplayAddQ(!displayAddQ);
   };
 
-  const updateQuestions = (productId) => {
+  const incrementQDisplayMax = () => {
+    setQDisplayMax(qDisplayMax + 2);
+  };
+
+  const resetQDisplayMax = () => {
+    setQDisplayMax(4);
+  };
+
+  const updateQuestions = () => {
     fetchQuestions(productId, setAllQuestions);
   };
 
-  const toggleDisplaySearchResults = () => {
-    setDisplaySearchResults(!displaySearchResults);
+  const initialize = (incomingQs) => {
+    setAllQuestions(incomingQs);
+    if (incomingQs.length === 4) {
+      updateQuestions();
+    }
   };
 
-  const submitSearch = (event) => {
-    event.preventDefault();
-    toggleDisplaySearchResults();
-    setSearchTerm('');
-    const questionBodyMatch = ({ question_body: question }) => {
-      const lowerCSearch = searchTerm.toLowerCase();
-      const lowerCBody = question.toLowerCase();
-      return (lowerCBody.includes(lowerCSearch));
-    };
-    const newDisplay = allQuestions.slice().filter(questionBodyMatch);
-    setAllQuestions(newDisplay);
-  };
+  //-------------------------------------------------------
+  // Effects:
 
+  //   initial rendering of the current product
   useEffect(() => {
-    updateQuestions(currentProduct);
-  }, [currentProduct]);
+    fetchQuestions(productId, initialize, 4);
+  }, [productId]);
 
-  if (allQuestions === undefined) {
+  //   show correct # of questions if not searching
+  useEffect(() => {
+    if (allQuestions && !displaySearchResults) {
+      const displayQs = allQuestions.slice(0, qDisplayMax);
+      setDisplayQuestions(displayQs);
+    }
+  }, [allQuestions, displaySearchResults, qDisplayMax]);
+
+  //   show search results
+  useEffect(() => {
+    if (displaySearchResults) {
+      const newDisplay = allQuestions.slice().filter(searchTermMatch);
+      setDisplayQuestions(newDisplay);
+    }
+  }, [displaySearchResults, allQuestions]);
+
+  //---------------------------------------------------------
+  // Rendering the component:
+
+  //   conditional sub-components
+  const moreQBtn = () => {
+    if (displayQuestions.length < allQuestions.length && !displaySearchResults) {
+      return (
+        <button type="button" onClick={incrementQDisplayMax}>Show more questions</button>
+      );
+    }
+    return (<div />);
+  };
+
+  const lessQBtn = () => {
+    if (displayQuestions.length > 4) {
+      return (
+        <button type="button" onClick={resetQDisplayMax}>Show less questions</button>
+      );
+    }
+    return (<div />);
+  };
+
+  if (!allQuestions) {
     return (
-      <div>Retrieving Question Data.....</div>
+      <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
     );
   }
 
+  //   the actual component
   return (
     <div id="qna">
       Questions:
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        submitSearch={submitSearch}
-        displayResults={displaySearchResults}
-        toggleResults={toggleDisplaySearchResults}
-        refreshQuestions={() => { updateQuestions(currentProduct); }}
       />
-      <QuestionsList questions={allQuestions} />
+      <QuestionsList questions={displayQuestions} />
       <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
       <ReactModal
         isOpen={displayAddQ}
@@ -69,12 +119,13 @@ const QnAParentComp = () => {
         <h1>Ask Your Question</h1>
         <h3>
           About the
-          {`${currentProduct} Change me once current product has a centralized state`}
+          {`${productId} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="question" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
+        <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
-      <button type="button">Show more questions</button>
+      {moreQBtn()}
+      {lessQBtn()}
     </div>
   );
 };
