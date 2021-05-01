@@ -29,7 +29,7 @@ const Question = ({ question }) => {
       <span>{body}</span>
       <span>{date}</span>
       <span>{askerName}</span>
-      <Helpfulness parentId={id} parentType="question" helpfulnessRank={helpfulness} />
+      <Helpfulness parentId={id} parentType="questions" helpfulnessRank={helpfulness} />
       <AnswersList answers={answers} />
       <ReactModal
         isOpen={showAddA}
@@ -41,7 +41,7 @@ const Question = ({ question }) => {
           About the
           {`Show Current Body and ${body} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={id} parentType="answer" closeOnSubmit={toggleShowAddA} updateQuestions={tempFuncForPropDrilling} />
+        <NewQAForm parentId={id} parentType="answers" closeOnSubmit={toggleShowAddA} updateQuestions={tempFuncForPropDrilling} />
         <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
       <button type="button" onClick={toggleShowAddA}>Add an answer</button>

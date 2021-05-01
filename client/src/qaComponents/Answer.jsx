@@ -20,7 +20,7 @@ const Answer = ({ answer }) => {
       <div>
         {date}
       </div>
-      <Helpfulness parentId={id} parentType="answer" helpfulnessRank={helpfulness} />
+      <Helpfulness parentId={id} parentType="answers" helpfulnessRank={helpfulness} />
     </div>
   );
 };
