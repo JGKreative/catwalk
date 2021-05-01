@@ -7,44 +7,71 @@ import { fetchQuestions } from './ApiController';
 import appContext from '../appContext';
 
 const QnAParentComp = () => {
+  //--------------------------------------------------
+  // State:
   const [allQuestions, setAllQuestions] = useState();
+  const [qNumToDisplay, setQNumToDisplay] = useState(4);
+  const [displayQuestions, setDisplayQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const [displayAddQ, setDisplayAddQ] = useState(false);
+  const [initializing, setInitializing] = useState(true);
   const currentProduct = useContext(appContext);
+
+  //-----------------------------------------------------------------
+  // Helper Funcs
+  const searchTermMatch = ({ question_body: question }) => {
+    const lowerCaseSearch = searchTerm.toLowerCase();
+    const lowerCaseQuestion = question.toLowerCase();
+    return (lowerCaseQuestion.includes(lowerCaseSearch));
+  };
 
   const toggleDisplayAddQ = () => {
     setDisplayAddQ(!displayAddQ);
   };
 
-  const updateQuestions = (productId) => {
-    fetchQuestions(productId, setAllQuestions);
+  const updateQuestions = (productId, firstPull) => {
+    fetchQuestions(productId, setAllQuestions, firstPull);
   };
 
-  const toggleDisplaySearchResults = () => {
-    setDisplaySearchResults(!displaySearchResults);
+  const initialize = (incomingQs) => {
+    setAllQuestions(incomingQs);
+    setInitializing(false);
   };
 
-  const submitSearch = (event) => {
-    event.preventDefault();
-    toggleDisplaySearchResults();
-    setSearchTerm('');
-    const questionBodyMatch = ({ question_body: question }) => {
-      const lowerCSearch = searchTerm.toLowerCase();
-      const lowerCBody = question.toLowerCase();
-      return (lowerCBody.includes(lowerCSearch));
-    };
-    const newDisplay = allQuestions.slice().filter(questionBodyMatch);
-    setAllQuestions(newDisplay);
-  };
+  //-------------------------------------------------------
+  // Effects:
 
+  // initial rendering of the current product
   useEffect(() => {
-    updateQuestions(currentProduct);
+    fetchQuestions(currentProduct, initialize, initializing);
   }, [currentProduct]);
 
-  if (allQuestions === undefined) {
+  // show correct # of questions if not searching
+  useEffect(() => {
+    if (allQuestions && searchTerm.length < 3) {
+      const displayQs = allQuestions.slice(0, qNumToDisplay);
+      setDisplayQuestions(displayQs);
+    }
+  }, [allQuestions, searchTerm]);
+
+  // show search results
+  useEffect(() => {
+    if (searchTerm.length >= 3) {
+      const newDisplay = allQuestions.slice().filter(searchTermMatch);
+      setDisplayQuestions(newDisplay);
+    }
+  }, [searchTerm.length]);
+
+  //---------------------------------------------------------
+  // Rendering the component
+
+  const moreQBtn = () => {
+    // if there's more q's than are being displayed, return a btn to increase #
+  };
+
+  if (!allQuestions) {
     return (
-      <div>Retrieving Question Data.....</div>
+      <div> </div>
     );
   }
 
@@ -54,12 +81,8 @@ const QnAParentComp = () => {
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        submitSearch={submitSearch}
-        displayResults={displaySearchResults}
-        toggleResults={toggleDisplaySearchResults}
-        refreshQuestions={() => { updateQuestions(currentProduct); }}
       />
-      <QuestionsList questions={allQuestions} />
+      <QuestionsList questions={displayQuestions} />
       <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
       <ReactModal
         isOpen={displayAddQ}
