@@ -5,7 +5,7 @@ import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 import appContext from './appContext';
 
 const App = () => {
-  const [currentProduct, changeCurrentProduct] = useState(20100);
+  const [currentProduct, changeCurrentProduct] = useState(20101);
   const testUpdate = () => {
     changeCurrentProduct(currentProduct + 1);
   };

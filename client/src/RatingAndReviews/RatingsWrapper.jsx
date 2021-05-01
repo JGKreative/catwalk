@@ -8,8 +8,6 @@ const RatingsWrapper = ({ data }) => {
   const ratings = data.ratings;
   const recommended = data.recommended;
   const characteristics = data.characteristics;
-  console.log('characteristics:', characteristics);
-
   const averageRating = calculateAvgRating(ratings);
   const averageRecommended = calculateAvgRecommended(recommended);
 
