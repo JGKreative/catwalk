@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 const express = require('express');
 const axios = require('axios');
 const authToken = require('../authToken.js');
@@ -19,8 +20,24 @@ qnaRouter.get('/allQuestions', (req, res) => {
     })
     .catch((err) => {
       console.log('error fetching question data', err);
-      res.sendStatus(500);
+      res.sendStatus(400);
     })
+})
+
+qnaRouter.get('/answers/:questionId', (req, res) => {
+  const getAnswersEndPoint = questionRootUrl.concat(`/${req.params.questionId}/answers`);
+  axios.get(getAnswersEndPoint, {
+    headers: authToken,
+    params: req.query
+  })
+  .then((response) => {
+    console.log(`answers for question ${req.params.questionId}`, response.data);
+    res.status(200).send(response.data);
+  })
+  .catch((err) => {
+    console.log('error fetching answers', err);
+    res.sendStatus(400);
+  })
 })
 
 qnaRouter.post('/', (req, res) => {
