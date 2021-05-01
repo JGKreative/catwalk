@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 const express = require('express');
 const axios = require('axios');
 const authToken = require('../authToken.js');
@@ -24,7 +23,6 @@ qnaRouter.get('/allQuestions', (req, res) => {
     })
 })
 
-//
 qnaRouter.post('/', (req, res) => {
   const bodyparams = req.body.formData;
 
