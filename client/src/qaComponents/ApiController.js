@@ -11,19 +11,22 @@ const compareHelpfulness = (a, b) => {
   return 0;
 }
 
-export const fetchQuestions = (productId, callback = () => {}, initializing) => {
-  console.log('ADD functionality to handle different between first and later pulls in qna api router fetch questions')
+export const fetchQuestions = (productId, callback = () => {}, count = 1000) => {
   axios.get('/qna/allQuestions', {
     params: {
       product_id: productId,
       page: 1,
-      count: 1000
+      count,
     },
   })
   .then((response) => {
-    console.log('response from request for all questions------>', response.data.results)
-    const QuestionsSortedByHelpfulness = response.data.results.sort(compareHelpfulness);
-    callback(QuestionsSortedByHelpfulness);
+    if (count > 4) {
+      console.log('response from request for all questions------>', response.data.results);
+    } if (count < 5) {
+      console.log('response for initial request for questions ---->', response.data.results);
+    }
+    callback(response.data.results)
+
   })
   .catch((err) => {
     console.log('error fetching question data', err);

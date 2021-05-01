@@ -10,12 +10,13 @@ const QnAParentComp = () => {
   //--------------------------------------------------
   // State:
   const [allQuestions, setAllQuestions] = useState();
-  const [qNumToDisplay, setQNumToDisplay] = useState(4);
+  const [qDisplayMax, setQDisplayMax] = useState(4);
   const [displayQuestions, setDisplayQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [displayAddQ, setDisplayAddQ] = useState(false);
-  const [initializing, setInitializing] = useState(true);
   const currentProduct = useContext(appContext);
+
+  const displaySearchResults = (searchTerm.length >= 3);
 
   //-----------------------------------------------------------------
   // Helper Funcs
@@ -29,13 +30,23 @@ const QnAParentComp = () => {
     setDisplayAddQ(!displayAddQ);
   };
 
-  const updateQuestions = (productId, firstPull) => {
-    fetchQuestions(productId, setAllQuestions, firstPull);
+  const incrementQDisplayMax = () => {
+    setQDisplayMax(qDisplayMax + 2);
+  };
+
+  const resetQDisplayMax = () => {
+    setQDisplayMax(4);
+  };
+
+  const updateQuestions = () => {
+    fetchQuestions(currentProduct, setAllQuestions);
   };
 
   const initialize = (incomingQs) => {
     setAllQuestions(incomingQs);
-    setInitializing(false);
+    if (incomingQs.length === 4) {
+      updateQuestions();
+    }
   };
 
   //-------------------------------------------------------
@@ -43,35 +54,49 @@ const QnAParentComp = () => {
 
   // initial rendering of the current product
   useEffect(() => {
-    fetchQuestions(currentProduct, initialize, initializing);
+    fetchQuestions(currentProduct, initialize, 4);
   }, [currentProduct]);
 
   // show correct # of questions if not searching
   useEffect(() => {
-    if (allQuestions && searchTerm.length < 3) {
-      const displayQs = allQuestions.slice(0, qNumToDisplay);
+    if (allQuestions && !displaySearchResults) {
+      const displayQs = allQuestions.slice(0, qDisplayMax);
       setDisplayQuestions(displayQs);
     }
-  }, [allQuestions, searchTerm]);
+  }, [allQuestions, displaySearchResults, qDisplayMax]);
 
   // show search results
   useEffect(() => {
-    if (searchTerm.length >= 3) {
+    if (displaySearchResults) {
       const newDisplay = allQuestions.slice().filter(searchTermMatch);
       setDisplayQuestions(newDisplay);
     }
-  }, [searchTerm.length]);
+  }, [displaySearchResults]);
 
   //---------------------------------------------------------
   // Rendering the component
 
   const moreQBtn = () => {
-    // if there's more q's than are being displayed, return a btn to increase #
+    if (displayQuestions.length < allQuestions.length && !displaySearchResults) {
+      return (
+        <button type="button" onClick={incrementQDisplayMax}>Show more questions</button>
+      );
+    }
+    return (<div />);
+  };
+
+  const collapseQListBtn = () => {
+    if (displayQuestions.length > 4) {
+      return (
+        <button type="button" onClick={resetQDisplayMax}>Show less questions</button>
+      );
+    }
+    return (<div />);
   };
 
   if (!allQuestions) {
     return (
-      <div> </div>
+      <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
     );
   }
 
@@ -94,10 +119,11 @@ const QnAParentComp = () => {
           About the
           {`${currentProduct} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={() => { updateQuestions(currentProduct); }} />
+        <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
-      <button type="button">Show more questions</button>
+      {moreQBtn()}
+      {collapseQListBtn()}
     </div>
   );
 };

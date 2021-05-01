@@ -12,9 +12,7 @@ const answerRootUrl = qaRootUrl.concat('/answers');
 qnaRouter.get('/allQuestions', (req, res) => {
   axios.get(questionRootUrl, {
     headers: authToken,
-    params: {
-      product_id: req.query.product_id,
-    },
+    params: req.query
   })
     .then((responseFromAPI) => {
       console.log('response to server in QNA Router------>', responseFromAPI.data)
@@ -26,6 +24,7 @@ qnaRouter.get('/allQuestions', (req, res) => {
     })
 })
 
+//
 qnaRouter.post('/', (req, res) => {
   const bodyparams = req.body.formData;
 
