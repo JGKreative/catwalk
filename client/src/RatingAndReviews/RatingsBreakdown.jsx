@@ -1,34 +1,68 @@
 import React from 'react';
-import StarRating from './StarRating';
-import { calculateAvgRating, calculateAvgRecommended } from './helperFunctions';
-import Breakdown from './Breakdown';
+import Chart from 'react-apexcharts';
 
-const RatingsBreakdown = ({ data }) => {
-  const ratings = data.ratings;
-  const recommended = data.recommended;
-  const characteristics = data.characteristics;
-  console.log('recommended:', recommended);
-  console.log('characteristics:', characteristics);
+const chartOptions = {
+  series: [{
+    name: 'Ratings',
+    data: [26, 4, 3, 3, 1]
+  }, {
+    name: '',
+    data: [11, 33, 34, 34, 36]
+  }],
 
-  const averageRating = calculateAvgRating(ratings);
-  const averageRecommended = calculateAvgRecommended(recommended);
+  options: {
+    chart: {
+      type: 'bar',
+      height: 250,
+      stacked: true,
+      stackType: '100%'
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+      // dataLabels: {
+      //   enabled: false
+      // },
+    },
+    colors: ['#05e33c', '#9e9e9e'],
+    // stroke: {
+    //   width: 1,
+    //   colors: ['#fff']
+    // },
+    title: {
+      text: 'Ratings Breakdown'
+    },
+    xaxis: {
+      categories: ['5 stars', '4 stars', '3 stars', '2 stars', '1 stars'],
+    },
+    yaxis: {
+
+    },
+    tooltip: {
+      enabled: false
+    },
+    fill: {
+      opacity: 1
+    },
+    legend: {
+      show: false
+    }
+  },
+}
+
+const RatingsBreakdown = () => {
 
   return (
-    <div className="ratings-breakdown-main">
-      <h3> {"Ratings & Reviews"} </h3>
-      <div>
-        <span style={{fontWeight: 'bold', fontSize: '3em'}}> {averageRating} </span>
-        <span>
-          <StarRating rating={averageRating} />
-        </span>
-      </div>
-      <Breakdown />
-      <div>
-      {averageRecommended}% of reviews recommend this product
-      </div>
-      <div>_____________________________</div>
+    <div id="chart">
+      <Chart
+        options={chartOptions.options}
+        series={chartOptions.series}
+        type="bar"
+        height="250"
+        width="300"
+      />
     </div>
-
   );
 };
 
