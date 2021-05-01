@@ -52,12 +52,12 @@ const QnAParentComp = () => {
   //-------------------------------------------------------
   // Effects:
 
-  // initial rendering of the current product
+  //   initial rendering of the current product
   useEffect(() => {
     fetchQuestions(productId, initialize, 4);
   }, [productId]);
 
-  // show correct # of questions if not searching
+  //   show correct # of questions if not searching
   useEffect(() => {
     if (allQuestions && !displaySearchResults) {
       const displayQs = allQuestions.slice(0, qDisplayMax);
@@ -65,7 +65,7 @@ const QnAParentComp = () => {
     }
   }, [allQuestions, displaySearchResults, qDisplayMax]);
 
-  // show search results
+  //   show search results
   useEffect(() => {
     if (displaySearchResults) {
       const newDisplay = allQuestions.slice().filter(searchTermMatch);
@@ -74,8 +74,9 @@ const QnAParentComp = () => {
   }, [displaySearchResults, allQuestions]);
 
   //---------------------------------------------------------
-  // Rendering the component
+  // Rendering the component:
 
+  //   conditional sub-components
   const moreQBtn = () => {
     if (displayQuestions.length < allQuestions.length && !displaySearchResults) {
       return (
@@ -85,7 +86,7 @@ const QnAParentComp = () => {
     return (<div />);
   };
 
-  const collapseQListBtn = () => {
+  const lessQBtn = () => {
     if (displayQuestions.length > 4) {
       return (
         <button type="button" onClick={resetQDisplayMax}>Show less questions</button>
@@ -100,6 +101,7 @@ const QnAParentComp = () => {
     );
   }
 
+  //   the actual component
   return (
     <div id="qna">
       Questions:
@@ -123,7 +125,7 @@ const QnAParentComp = () => {
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       {moreQBtn()}
-      {collapseQListBtn()}
+      {lessQBtn()}
     </div>
   );
 };
