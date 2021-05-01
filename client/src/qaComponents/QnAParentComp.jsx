@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import QuestionsList from './QuestionsList';
 import SearchBar from './SearchBar';
 import NewQAForm from './NewQAForm';
 import { fetchQuestions } from './ApiController';
-import appContext from '../appContext';
+import centralState from '../appContext';
 
 const QnAParentComp = () => {
   //--------------------------------------------------
@@ -14,7 +14,7 @@ const QnAParentComp = () => {
   const [displayQuestions, setDisplayQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [displayAddQ, setDisplayAddQ] = useState(false);
-  const currentProduct = useContext(appContext);
+  const { productId, productName, productDescription } = centralState();
 
   const displaySearchResults = (searchTerm.length >= 3);
 
@@ -39,7 +39,7 @@ const QnAParentComp = () => {
   };
 
   const updateQuestions = () => {
-    fetchQuestions(currentProduct, setAllQuestions);
+    fetchQuestions(productId, setAllQuestions);
   };
 
   const initialize = (incomingQs) => {
@@ -54,8 +54,8 @@ const QnAParentComp = () => {
 
   // initial rendering of the current product
   useEffect(() => {
-    fetchQuestions(currentProduct, initialize, 4);
-  }, [currentProduct]);
+    fetchQuestions(productId, initialize, 4);
+  }, [productId]);
 
   // show correct # of questions if not searching
   useEffect(() => {
@@ -71,7 +71,7 @@ const QnAParentComp = () => {
       const newDisplay = allQuestions.slice().filter(searchTermMatch);
       setDisplayQuestions(newDisplay);
     }
-  }, [displaySearchResults]);
+  }, [displaySearchResults, allQuestions]);
 
   //---------------------------------------------------------
   // Rendering the component
@@ -96,7 +96,7 @@ const QnAParentComp = () => {
 
   if (!allQuestions) {
     return (
-      <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+      <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
     );
   }
 
@@ -117,9 +117,9 @@ const QnAParentComp = () => {
         <h1>Ask Your Question</h1>
         <h3>
           About the
-          {`${currentProduct} Change me once current product has a centralized state`}
+          {`${productId} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={currentProduct} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+        <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
       {moreQBtn()}
