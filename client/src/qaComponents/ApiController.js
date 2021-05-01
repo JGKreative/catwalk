@@ -11,10 +11,13 @@ const compareHelpfulness = (a, b) => {
   return 0;
 }
 
-export const fetchQuestions = (productId, callback) => {
+export const fetchQuestions = (productId, callback = () => {}, initializing) => {
+  console.log('ADD functionality to handle different between first and later pulls in qna api router fetch questions')
   axios.get('/qna/allQuestions', {
     params: {
       product_id: productId,
+      page: 1,
+      count: 1000
     },
   })
   .then((response) => {

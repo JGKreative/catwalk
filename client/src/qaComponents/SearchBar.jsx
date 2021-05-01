@@ -1,8 +1,6 @@
 import React from 'react';
 
-const SearchBar = ({
-  searchTerm, setSearchTerm, submitSearch, displayResults, toggleResults, refreshQuestions,
-}) => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
   const handleChange = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
@@ -10,23 +8,24 @@ const SearchBar = ({
 
   const handleShowAllClick = (event) => {
     event.preventDefault();
-    toggleResults();
-    refreshQuestions();
+    setSearchTerm('');
   };
 
-  if (displayResults) {
-    return (
-      <form onSubmit={submitSearch}>
-        <input type="text" value={searchTerm} onChange={handleChange} placeholder="Search for questions here" />
-        <button type="submit"> Search </button>
+  const ShowAllBtn = () => {
+    if (searchTerm.length >= 3) {
+      return (
         <button type="button" onClick={handleShowAllClick}>Show All Questions</button>
-      </form>
+      );
+    }
+    return (
+      <div />
     );
-  }
+  };
+
   return (
-    <form onSubmit={submitSearch}>
+    <form>
       <input type="text" value={searchTerm} onChange={handleChange} placeholder="Search for questions here" />
-      <button type="submit"> Search </button>
+      {ShowAllBtn()}
     </form>
   );
 };
