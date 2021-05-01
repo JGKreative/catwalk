@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Review from './Review';
 import { sortByHelpful, sortByNewest, sortByRelevant } from './helperFunctions';
 
-const ReviewsList = ({ data, sortBy }) => {
+const ReviewsList = ({ data, sortBy, toggleModal }) => {
 
   const reviews = data.map((review) => (
     <Review review={review} key={review.review_id} rating={review.rating} />
@@ -18,9 +18,6 @@ const ReviewsList = ({ data, sortBy }) => {
   if (sortBy === 'helpfulness') {
     sortedReviews = sortByHelpful(reviews);
   };
-  // sortedReviews.forEach(r => {
-  //   console.log(r.props.review.date)});
-
 
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const displayReviews = sortedReviews.slice(0, reviewsShowing);
@@ -34,7 +31,7 @@ const ReviewsList = ({ data, sortBy }) => {
     <div className="ReviewsList">
       {displayReviews}
       {seeMoreButton}
-      <button className="add-review-btn"> Add Review + </button>
+      <button className="add-review-btn" onClick={toggleModal}> Add Review + </button>
     </div>
 
   );
