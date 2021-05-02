@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
-import SampleData from './SampleData';
 import appContextDefault from '../appContext';
-import api from './ApiController'; // for using api data
-
-// const { product, productStyles } = SampleData;
-// const allProducts = api.fetchAllProducts(() => console.log(response.data)); // for using api data
+import api from './ApiController';
 
 const OverviewContainer = () => {
   const { productId } = appContextDefault();
