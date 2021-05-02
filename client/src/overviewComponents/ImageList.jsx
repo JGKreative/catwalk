@@ -9,7 +9,6 @@ const ImageList = ({
   // const [selectedThumbnailBorder, setSelectedThumbailBorder] = useState('');
 
   const setSelectedImage = (event) => {
-    console.log('setting selected image');
     updateMainImage(event);
   };
 
