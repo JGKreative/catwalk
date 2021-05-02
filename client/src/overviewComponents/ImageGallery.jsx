@@ -14,7 +14,7 @@ const ImageGallery = ({
         position: 'relative',
         width: '50%',
         maxWidth: '50%',
-        margin: '5%',
+        margin: '2%',
       }}
       // object-fit="contain"
     >
@@ -28,9 +28,12 @@ const ImageGallery = ({
       <img
         src={mainImage}
         alt=""
-        // object-fit="contain"
-        width="100%"
         height="100%"
+        width="auto"
+        style={{
+          display: 'block',
+          margin: 'auto',
+        }}
       />
     </div>
   );
