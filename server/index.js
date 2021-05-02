@@ -1,6 +1,7 @@
 /* eslint-disable */
 const express = require('express')
 const path = require('path')
+const overviewRouter = require('./overViewRouter.js')
 const qnaRouter = require('./qnaRouter.js')
 const rnrRouter = require('./rnrRouter.js')
 const morgan = require('morgan'); /* <-- middleware */
@@ -13,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../public')));
 // want this??
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   console.log(`${req.method} request coming in for ${req.url}`);
   next();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 //------------------------------------------------------//
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
+app.use('/overview', overviewRouter);
 app.use('/qna', qnaRouter);
 app.use('/rnr', rnrRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
