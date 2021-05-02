@@ -10,6 +10,7 @@ const OverviewContainer = () => {
   const [productStyles, setProductStyles] = useState();
   const [currentStyle, setStyle] = useState();
   const [currentPrice, setCurrentPrice] = useState();
+  const [mainImage, setMainImage] = useState();
   const updateImageGallery = (newStyle) => {
     setStyle(newStyle);
   };
@@ -34,18 +35,27 @@ const OverviewContainer = () => {
 
   useEffect(() => {
     if (currentStyle) {
+      setMainImage(currentStyle.photos[0].url);
       getTruePrice();
     }
   }, [currentStyle]);
 
-  if (product && productStyles && currentStyle) {
+  if (product && productStyles && currentStyle && mainImage) {
     return (
       <div
         className="module product-description"
-        style={{ display: 'flex' }}
+        style={{
+          height: '70vh',
+          width: 'auto',
+          display: 'flex',
+          // margin: '5%',
+          // padding: '5%',
+        }}
       >
         <ImageGallery
           className="product-description-images"
+          mainImage={mainImage}
+          setMainImage={setMainImage}
           images={currentStyle.photos}
           styleId={currentStyle.style_id}
         />
@@ -55,6 +65,7 @@ const OverviewContainer = () => {
           title={product.name}
           price={currentPrice}
           productStyles={productStyles}
+          currentStyle={currentStyle}
           setStyle={setStyle}
           updateImageGallery={updateImageGallery}
         />

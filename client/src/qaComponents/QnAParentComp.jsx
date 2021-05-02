@@ -80,52 +80,73 @@ const QnAParentComp = () => {
   const moreQBtn = () => {
     if (displayQuestions.length < allQuestions.length && !displaySearchResults) {
       return (
-        <button type="button" onClick={incrementQDisplayMax}>Show more questions</button>
+        <button type="button" onClick={incrementQDisplayMax} style={btnStyle}>Show more questions</button>
       );
     }
     return (<div />);
   };
+
+  const btnStyle = { padding:'5px', background:'lightGrey', fontSize:'large'}
 
   const lessQBtn = () => {
     if (displayQuestions.length > 4) {
       return (
-        <button type="button" onClick={resetQDisplayMax}>Show less questions</button>
+        <button type="button" onClick={resetQDisplayMax} style={btnStyle}>Show less questions</button>
       );
     }
     return (<div />);
   };
-
-  if (!allQuestions) {
+  if (!allQuestions || !allQuestions.length) {
     return (
+    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', width: '60%', margin: 'auto' }}>
+      <h1>Questions</h1>
+        <h3>
+         Ask the First Question About {productName} :
+        </h3>
       <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
-    );
+    </div>
+);
   }
-
+  // if (allQuestions && !allQuestions.length) {
+  //   return (
+  //     <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+  //   );
+  // }
   //   the actual component
+
   return (
-    <div id="qna">
-      Questions:
+    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', margin: 'auto' }}>
+      <h2>Questions:</h2>
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
       <QuestionsList questions={displayQuestions} />
-      <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
       <ReactModal
         isOpen={displayAddQ}
         onRequestClose={toggleDisplayAddQ}
         appElement={document.querySelector('#app')}
+        style={{overlay: {maxHeight: '70%', height: '60%', maxWidth: '50%', margin:'auto'}}}
       >
         <h1>Ask Your Question</h1>
         <h3>
-          About the
-          {`${productId} Change me once current product has a centralized state`}
+          About {productName} :
         </h3>
         <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+        <br />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
-      {moreQBtn()}
-      {lessQBtn()}
+      <div>
+        <span style={{ float: 'left', paddingLeft: '10%' }}>
+          <button type="button" onClick={toggleDisplayAddQ} style={btnStyle}>Ask A Question</button>
+        </span>
+        <span style={{ float: 'right', paddingRight: '20%' }}>
+          {lessQBtn()}
+          {moreQBtn()}
+          <br />
+          <br />
+        </span>
+      </div>
     </div>
   );
 };

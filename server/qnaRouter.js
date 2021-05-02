@@ -51,10 +51,11 @@ qnaRouter.post('/', (req, res) => {
     })
     .then((results) => {
       console.log('here is result from post question', results.data);
-      res.sendStatus(200);
+      res.status(200).send(results.data);
     })
     .catch((err) => {
-      console.log('here is an error from post quesiton', err);
+      console.log('here is an error from post quesiton');
+      res.status(400).send(err);
     })
   }
 
@@ -87,7 +88,6 @@ qnaRouter.put('/:type/:id/:action', (req, res) => {
     res.sendStatus(200);
   })
   .catch((err) => {
-    // console.log('put action error', err);
     console.log('put action error');
     res.status(400).send(err);
   })

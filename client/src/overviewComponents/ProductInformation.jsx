@@ -5,11 +5,14 @@ import Styles from './Styles';
 import AddToCart from './AddToCart';
 
 const ProductInformation = ({
-  category, title, price, productStyles, updateImageGallery,
+  category, title, price, productStyles, currentStyle, updateImageGallery,
 }) => (
   <div
     style={{
-      margin: '5%',
+      margin: '2%',
+      width: 'auto',
+      maxWidth: '30%',
+      height: 'auto',
     }}
   >
     <StarRating />
@@ -18,7 +21,11 @@ const ProductInformation = ({
       <h1>{title}</h1>
       <span>{price}</span>
     </section>
-    <Styles styles={productStyles} updateImageGallery={updateImageGallery} />
+    <Styles
+      styles={productStyles}
+      updateImageGallery={updateImageGallery}
+      currentStyle={currentStyle}
+    />
     <AddToCart skus={Object.values(productStyles[0].skus)} />
   </div>
 );

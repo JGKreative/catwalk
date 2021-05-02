@@ -24,7 +24,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <form>
-      <input type="text" value={searchTerm} onChange={handleChange} placeholder="Search for questions here" />
+      <input type="text" value={searchTerm} onChange={handleChange} placeholder="Have a question? Search for answers…" style={{maxWidth: '50%', width: '50%'}}/>
       {ShowAllBtn()}
     </form>
   );

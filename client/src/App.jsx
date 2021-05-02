@@ -5,13 +5,13 @@ import RatingsAndReviewsService from './RatingAndReviews/Wrapper';
 import { appContext } from './appContext';
 
 const App = () => {
-  const urlProductId = window.location.pathname.split('/')[1];
+  const urlProductId = Number(window.location.pathname.split('/')[1]);
   const [productId, changeProductId] = useState(urlProductId || 20100);
   const [productName, setProductName] = useState('[Current Product Name Here]');
   const [productDescription, setProductDescription] = useState('[Current Product Description Here]');
 
   const testUpdate = () => {
-    const nextProductId = (Number(urlProductId) + 1);
+    const nextProductId = urlProductId + 1;
     const nextProductIdStr = nextProductId.toString();
     const nextProductUrl = window.location.origin.concat(`/${nextProductIdStr}`);
     if (!urlProductId) {
@@ -34,12 +34,24 @@ const App = () => {
     }
   }, [urlProductId]);
 
+  const wetTestBtnStyle = {
+    margin: '0 auto',
+    display: 'block',
+    padding: '25px',
+    background: 'silver',
+    fontSize: 'large',
+    border: 'groove',
+    borderRadius: '30px',
+  };
+
   return (
     <appContext.Provider value={contextExport} id="app">
-      <button type="button" onClick={testUpdate}>🐈🐈  Can haz next product plz?  🐈🐈</button>
-      {/* <OverviewContainer /> */}
-      <RatingsAndReviewsService />
-      <QnA />
+      <div>
+        <button type="button" onClick={testUpdate} style={wetTestBtnStyle}>🐈🐈  Can haz next product plz?  🐈🐈</button>
+        <OverviewContainer />
+        <RatingsAndReviewsService />
+        <QnA />
+      </div>
     </appContext.Provider>
   );
 };

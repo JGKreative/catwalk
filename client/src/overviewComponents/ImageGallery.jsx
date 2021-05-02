@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import ImageList from './ImageList';
 
-const ImageGallery = ({ images, styleId }) => {
-  const [mainImage, setMainImage] = useState(images[0].url);
-
+const ImageGallery = ({
+  mainImage, setMainImage, images, styleId,
+}) => {
   const updateMainImage = (event) => {
-    console.log('setting main image');
     setMainImage(event.target.alt);
   };
 
@@ -15,7 +14,7 @@ const ImageGallery = ({ images, styleId }) => {
         position: 'relative',
         width: '50%',
         maxWidth: '50%',
-        margin: '5%',
+        margin: '2%',
       }}
       // object-fit="contain"
     >
@@ -29,9 +28,12 @@ const ImageGallery = ({ images, styleId }) => {
       <img
         src={mainImage}
         alt=""
-        // object-fit="contain"
-        width="100%"
         height="100%"
+        width="auto"
+        style={{
+          display: 'block',
+          margin: 'auto',
+        }}
       />
     </div>
   );
