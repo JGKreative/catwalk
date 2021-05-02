@@ -44,7 +44,13 @@ const OverviewContainer = () => {
     return (
       <div
         className="module product-description"
-        style={{ display: 'flex' }}
+        style={{
+          height: '70vh',
+          width: 'auto',
+          display: 'flex',
+          // margin: '5%',
+          // padding: '5%',
+        }}
       >
         <ImageGallery
           className="product-description-images"
@@ -59,6 +65,7 @@ const OverviewContainer = () => {
           title={product.name}
           price={currentPrice}
           productStyles={productStyles}
+          currentStyle={currentStyle}
           setStyle={setStyle}
           updateImageGallery={updateImageGallery}
         />
