@@ -33,6 +33,22 @@ export const fetchQuestions = (productId, callback = () => {}, count = 1000) => 
   })
 };
 
+export const fetchAnswers = (questionId, cb) => {
+  axios.get(`/qna/answers/${questionId}`, {
+    params: {
+      page: 1,
+      count: 1000
+    }
+  })
+  .then((results) => {
+    console.log('got updated answers', results.data.results);
+    cb(results.data.results);
+  })
+  .catch((err) => {
+    console.log('error getting updated answers', err);
+  });
+}
+
 export const submitNewQA = (type, newQuestion, nickname, email, parentId, cb) => {
   const formData = {
     body: newQuestion,
