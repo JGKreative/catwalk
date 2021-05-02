@@ -35,8 +35,8 @@ const App = () => {
   }, [urlProductId]);
 
   const wetTestBtnStyle = {
-    marginLeft: '25%',
-    marginBottom: '25px',
+    margin: '0 auto',
+    display: 'block',
     padding: '25px',
     background: 'silver',
     fontSize: 'large',

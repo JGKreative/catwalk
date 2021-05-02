@@ -27,7 +27,6 @@ app.use((req, res, next) => {
 app.use('/overview', overviewRouter);
 app.use('/qna', qnaRouter);
 app.use('/rnr', rnrRouter);
-//app.use('/otherModuleEndPoints', otherModuleRouter);
 
 
 //--- This is to navigate to products from url

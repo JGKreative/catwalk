@@ -24,7 +24,8 @@ const Review = ({ review, rating }) => {
       height: '150px',
       border: '1px solid black'
     }}
-      src={img.url}
+      src={img.url === undefined ? 'Image Not Found' : img.url}
+      alt='Image Not Found'
       key={img.id} />
   ));
 
