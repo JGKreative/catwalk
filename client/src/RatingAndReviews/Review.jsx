@@ -42,7 +42,6 @@ const Review = ({ review, rating }) => {
 
     <div className="Review">
       <div className="Stars-User-DateOfReview-TopBar">
-        <div> - - - - - - - - -{review.review_id} - - - - - - - - -</div>
         <StarRating rating={rating} />
         <span> {" - - - - - - - - "} </span>
         <span> {review.reviewer_name}, </span>
