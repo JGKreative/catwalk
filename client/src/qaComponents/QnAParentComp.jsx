@@ -86,7 +86,7 @@ const QnAParentComp = () => {
     return (<div />);
   };
 
-  const btnStyle = { padding:'5px', background:'lighGrey', fontSize:'large'}
+  const btnStyle = { padding:'5px', background:'lightGrey', fontSize:'large'}
 
   const lessQBtn = () => {
     if (displayQuestions.length > 4) {
@@ -116,11 +116,11 @@ const QnAParentComp = () => {
         isOpen={displayAddQ}
         onRequestClose={toggleDisplayAddQ}
         appElement={document.querySelector('#app')}
+        style={{overlay: {maxHeight: '60%', height:'50%', maxWidth: '50%', margin:'auto'}}}
       >
         <h1>Ask Your Question</h1>
         <h3>
-          About the
-          {`${productName} Change me once current product has a centralized state`}
+          About {productName} :
         </h3>
         <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
         <br />

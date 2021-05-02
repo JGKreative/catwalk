@@ -2,7 +2,7 @@ import React from 'react';
 import Answer from './Answer';
 
 const AnswersList = ({ answers }) => (
-  <ul style={{ background: 'whitesmoke', border: 'ridge', borderRadius: '10px', padding: (30, 0, 30, 30), align: 'center', maxWidth: '70%' }}>
+  <ul style={{ background: 'gainsboro', border: 'ridge', borderRadius: '10px', padding: (30, 0, 30, 30), align: 'center', maxWidth: '70%' }}>
     A:
     <br />
     {answers.map((answer) => {

@@ -128,14 +128,16 @@ const Question = ({ question }) => {
         isOpen={showAddA}
         onRequestClose={toggleShowAddA}
         appElement={document.querySelector('#app')}
+        style={{overlay: {maxHeight: '60%', height:'50%', maxWidth: '50%', margin:'auto'}}}
       >
         <h1>Submit your Answer</h1>
         <h3>
-          About the
-          {`Show Current Body and ${body} Change me once current product has a centralized state`}
+          About {productName} :
+          <br />
+          {body}
         </h3>
-        <button type="button" onClick={toggleShowAddA}>Go Back</button>
         <NewQAForm parentId={id} parentType="answers" closeOnSubmit={toggleShowAddA} updateQuestions={refreshOnSubmit} />
+        <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
     </div>
   );
