@@ -58,10 +58,15 @@ const ProductBreakdown = ({ data }) => {
         barSet.push(bar);
         count += 10;
         difference = rating - count;
-      } else if (difference <= 10) {
+      } else if (difference === 10) {
         let newBar = bar.slice();
         newBar.splice(difference -1, 1, '^')
-        barSet.push(newBar)
+        barSet.push(newBar, bar)
+        break;
+      } else if (difference < 10) {
+        let newBar = bar.slice();
+        newBar.splice(difference -1, 1, '^')
+        barSet.push(newBar, bar)
         break;
       }
     }

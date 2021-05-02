@@ -4,12 +4,13 @@ import SortOptions from './SortOptions';
 import RatingsWrapper from './RatingsWrapper';
 import ReviewForm from './AddReviewForm';
 import ReactModal from 'react-modal';
-import { getReviews } from './ApiController';
+import { getReviews, getReviewsMeta } from './ApiController';
 import centralState from '../appContext';
 
 import data from './fakeData';
 const reviewsData = data.reviewsForProductId20101.results;
-const metaData = data.metaDataForProductId20100;
+const metaData = data.metaDataForProductId20101;
+console.log('metaData:', metaData)
 
 const RatingsAndReviewsService = () => {
   const [ratings, setRatings] = useState(metaData);
@@ -23,13 +24,9 @@ const RatingsAndReviewsService = () => {
     setDisplayModal(!displayModal);
   };
 
-  const updateReviews = () => {
-    getReviews(productId, setReviews);
-  };
-
-
   useEffect(() => {
     getReviews(productId, setReviews);
+    getReviewsMeta(productId, setRatings);
   }, [productId]);
 
   return (

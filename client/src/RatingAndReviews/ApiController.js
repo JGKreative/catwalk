@@ -15,7 +15,7 @@ PUT: (reporting a review - flagging it to not show up)
 
   export const getReviews = function (productId, cb) {
     // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/(productId)
-    Axios.get('/rnr/allReviews', {
+    Axios.get('/rnr/reviews', {
       params: {
         product_id: productId,
         page: 1,
@@ -23,7 +23,7 @@ PUT: (reporting a review - flagging it to not show up)
       }
     })
     .then((response) => {
-      console.log('request response to getReviews:', response.data.results);
+      console.log('client has received a Reviews response from server:', response.data.results);
       cb(response.data.results)
     })
     .catch(err => {
@@ -31,9 +31,21 @@ PUT: (reporting a review - flagging it to not show up)
     })
   };
 
-  // getMetaData = function (productId) {
-  //   // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/meta/(productId)
-  // };
+  export const getReviewsMeta = function (productId, cb) {
+    // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/meta/(productId)
+    Axios.get('/rnr/reviews/meta', {
+      params: {
+        product_id: productId
+      }
+    })
+    .then((response) => {
+      console.log('client has received a meta response from server:', response.data);
+      cb(response.data)
+    })
+    .catch(err => {
+      console.error('error fetching reviews:', err);
+    })
+  };
 
   // getAvgRating: function (productId) {
   //   // GET: https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea/reviews/(productId)
