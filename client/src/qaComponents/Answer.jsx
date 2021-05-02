@@ -10,17 +10,27 @@ const Answer = ({ answer }) => {
     helpfulness,
   } = answer;
 
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric',
+  });
+
   return (
     <div>
-      A:
+      <br />
       <span>{body}</span>
+      <br />
       <div>
         {answererName}
       </div>
+      <br />
       <div>
-        {date}
+        {formattedDate}
       </div>
+      <br />
       <Helpfulness parentId={id} parentType="answers" helpfulnessRank={helpfulness} />
+      <br />
+      <br />
+      -------------------
     </div>
   );
 };

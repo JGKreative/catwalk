@@ -80,16 +80,18 @@ const QnAParentComp = () => {
   const moreQBtn = () => {
     if (displayQuestions.length < allQuestions.length && !displaySearchResults) {
       return (
-        <button type="button" onClick={incrementQDisplayMax}>Show more questions</button>
+        <button type="button" onClick={incrementQDisplayMax} style={btnStyle}>Show more questions</button>
       );
     }
     return (<div />);
   };
 
+  const btnStyle = { padding:'5px', background:'lighGrey', fontSize:'large'}
+
   const lessQBtn = () => {
     if (displayQuestions.length > 4) {
       return (
-        <button type="button" onClick={resetQDisplayMax}>Show less questions</button>
+        <button type="button" onClick={resetQDisplayMax} style={btnStyle}>Show less questions</button>
       );
     }
     return (<div />);
@@ -103,14 +105,13 @@ const QnAParentComp = () => {
 
   //   the actual component
   return (
-    <div id="qna">
-      Questions:
+    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', paddingLeft: '50px', margin: 'auto' }}>
+      <h2>Questions:</h2>
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
       <QuestionsList questions={displayQuestions} />
-      <button type="button" onClick={toggleDisplayAddQ}>Ask A Question</button>
       <ReactModal
         isOpen={displayAddQ}
         onRequestClose={toggleDisplayAddQ}
@@ -119,13 +120,25 @@ const QnAParentComp = () => {
         <h1>Ask Your Question</h1>
         <h3>
           About the
-          {`${productId} Change me once current product has a centralized state`}
+          {`${productName} Change me once current product has a centralized state`}
         </h3>
         <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+        <br />
         <button type="button" onClick={toggleDisplayAddQ}>Go Back</button>
       </ReactModal>
-      {moreQBtn()}
-      {lessQBtn()}
+      <div>
+        <span style={{ float: 'left', paddingLeft: '10%' }}>
+          <button type="button" onClick={toggleDisplayAddQ} style={btnStyle}>Ask A Question</button>
+        </span>
+        <span style={{ float: 'right', paddingRight: '20%' }}>
+          {lessQBtn()}
+          {moreQBtn()}
+          <br />
+          <br />
+        </span>
+      </div>
+
+
     </div>
   );
 };

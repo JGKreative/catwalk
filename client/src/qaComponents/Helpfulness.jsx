@@ -29,15 +29,18 @@ const Helpfulness = ({ parentId, helpfulnessRank, parentType }) => {
   const displayReported = !reported ? <a style={{ textDecorationLine: 'underline' }} onClick={submitReport}> Report </a> : <span> Reported </span>;
 
   return (
-    <div>
+    <span>
       Helpful?
       <span role="button" onClick = {handleVote}>
+        {' '}
         Yes(
         {helpfulnessRank}
         )
+        {' '}
       </span>
+      {'  ||  '}
       {displayReported}
-    </div>
+    </span>
   );
 };
 
