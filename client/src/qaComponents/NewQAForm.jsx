@@ -14,7 +14,7 @@ const NewQAForm = ({
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log('remember to create error handling for me!!!');
+    console.log('remember to create error handling for me for when submitting new q/a!!!');
     submitNewQA(parentType, newQuestion, nickname, email, parentId, updateQuestions);
     setNewQuestion('');
     setNickname('');
