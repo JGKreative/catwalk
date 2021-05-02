@@ -14,8 +14,6 @@ const RatingsWrapper = ({ data }) => {
   //   }
   // }
   // checkForRatings(data);
-
-  console.log('data', data)
   const ratings = data.ratings;
   const recommended = data.recommended;
   const characteristics = data.characteristics;

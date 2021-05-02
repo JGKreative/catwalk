@@ -30,11 +30,13 @@ const RatingsAndReviewsService = () => {
   }, [productId]);
 
   return (
-    <div className="RnR-Main">
-      <div style={{ display: 'flex', justifyContent: 'left' }} id="alignMeLeft">
+    <div className="RnR-Main" style={{
+      display: 'flex', flexDirection: "row"
+    }}>
+      <div style={{ flexDirection: 'column', justifyContent: 'left' }} id="alignMeLeft">
         <RatingsWrapper data={ratings} />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'right' }} id="alignMeRight">
+      <div style={{ flexDirection: 'column', justifyContent: 'right' }} id="alignMeRight">
         <SortOptions data={reviews} setSorted={setSortedBy} />
         <ReviewsList data={reviews} sortBy={sortedBy} toggleModal={toggleModal} />
       </div>
@@ -46,7 +48,7 @@ const RatingsAndReviewsService = () => {
         <ReviewForm />
         <button onClick={toggleModal}>Go Back</button>
       </ReactModal>
-    </div>
+    </div >
   );
 };
 

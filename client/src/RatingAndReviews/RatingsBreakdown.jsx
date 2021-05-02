@@ -67,12 +67,19 @@ const RatingsBreakdown = ({ ratings }) => {
     data: seriesTwo,
   }];
 
-  // let keys = [1, 2, 3, 4, 5];
-  // keys.forEach((key, i) => {
-  //   if (series[0].data.includes(key[i])) {
-  // })}
+  let keys = [1, 2, 3, 4, 5];
+  let foundKeys = [];
+  console.log('series[0].data', series[0].data);
 
+  keys.forEach((key, i) => {
+    if (series[0].data.includes(key)) {
 
+      let value = series[0].data[i];
+      console.log('series[0].data',);
+      foundKeys.push(value);
+    }
+  });
+  console.log('foundKeys:', foundKeys);
 
   return (
     <div id="chart">
