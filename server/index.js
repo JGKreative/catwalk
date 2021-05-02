@@ -3,6 +3,7 @@
 const express = require('express');
 const path = require('path');
 const qnaRouter = require('./qnaRouter.js');
+const overviewRouter = require('./overviewRouter.js')
 const morgan = require('morgan'); /* <-- middleware */
 
 const app = express();
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
 app.use('/qna', qnaRouter);
+app.use('/overview', overviewRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
 
 app.listen(PORT, () => {
