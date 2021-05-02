@@ -2,7 +2,9 @@ import React from 'react';
 import Answer from './Answer';
 
 const AnswersList = ({ answers }) => (
-  <div>
+  <ul style={{ background: 'Gainsboro', border: 'ridge', borderRadius: '10px', padding: (30, 0, 30, 30), align: 'center', maxWidth: '70%' }}>
+    A:
+    <br />
     {answers.map((answer) => {
       let key;
       if (answer.id) {
@@ -14,7 +16,8 @@ const AnswersList = ({ answers }) => (
         <Answer answer={answer} key={key} />
       );
     })}
-  </div>
+    <br />
+  </ul>
 );
 
 export default AnswersList;
