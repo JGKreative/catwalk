@@ -48,8 +48,9 @@ module.exports = {
       }
     };
     const avg = (total / numberOfRatings).toFixed(2)
-    return Math.round(avg * 10) / 10;
+     return avg !== 'NaN' ? Math.round(avg * 10) / 10 : 0;
   },
+
   calculateAvgRecommended: function(data) {
     let total = 0;
     let trueTotal;
@@ -62,7 +63,7 @@ module.exports = {
       }
     }
     const avg = (trueTotal / total).toFixed(2);
-    return Math.round(avg * 100);
+    return avg !== 'NaN' ? Math.round(avg * 100) : 0;
   },
 
 
