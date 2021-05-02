@@ -28,12 +28,13 @@ const Review = ({ review, rating }) => {
       key={img.id} />
   ));
 
-  const response = review.response !== null ?
-    <div style={{ backgroundColor: 'lightgray' }} >
+    let response;
+    if (review.response !== null && review.response !== '') {
+      response = <div style={{ backgroundColor: 'lightgray' }} >
       <p style={{ fontWeight: 'bold' }}> Response: </p>
       <p> {review.response} </p>
-    </div> :
-    null;
+    </div>
+    }
 
 
   return (

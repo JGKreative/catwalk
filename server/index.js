@@ -1,8 +1,8 @@
 /* eslint-disable */
-
-const express = require('express');
-const path = require('path');
-const qnaRouter = require('./qnaRouter.js');
+const express = require('express')
+const path = require('path')
+const qnaRouter = require('./qnaRouter.js')
+const rnrRouter = require('./rnrRouter.js')
 const morgan = require('morgan'); /* <-- middleware */
 
 const app = express();
@@ -23,8 +23,8 @@ app.use((req, res, next) => {
 //------------------------------------------------------//
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
-
 app.use('/qna', qnaRouter);
+app.use('/rnr', rnrRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
 
 

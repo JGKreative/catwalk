@@ -34,9 +34,19 @@ const App = () => {
     }
   }, [urlProductId]);
 
+  const testBtnStyle = {
+    marginLeft: '25%',
+    marginBottom: '25px',
+    padding: '25px',
+    background: 'SlateGray',
+    fontSize: 'large',
+    border: 'groove',
+    borderRadius: '30px',
+  };
+
   return (
     <appContext.Provider value={contextExport} id="app">
-      <button type="button" onClick={testUpdate} style={{marginLeft:'25%', marginBottom:'25px', padding:'25px', background:'SlateGray', fontSize:'large', border:'groove', borderRadius:'30px'}}>🐈🐈  Can haz next product plz?  🐈🐈</button>
+      <button type="button" onClick={testUpdate} style={testBtnStyle}>🐈🐈  Can haz next product plz?  🐈🐈</button>
       <OverviewContainer />
       <RatingsAndReviewsService />
       <QnA />
