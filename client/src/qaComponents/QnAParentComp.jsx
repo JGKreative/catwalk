@@ -96,14 +96,24 @@ const QnAParentComp = () => {
     }
     return (<div />);
   };
-
-  if (!allQuestions) {
+  if (!allQuestions || !allQuestions.length) {
     return (
+    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', width: '60%', margin: 'auto' }}>
+      <h1>Questions</h1>
+        <h3>
+         Ask the First Question About {productName} :
+        </h3>
       <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
-    );
+    </div>
+);
   }
-
+  // if (allQuestions && !allQuestions.length) {
+  //   return (
+  //     <NewQAForm parentId={productId} parentType="questions" closeOnSubmit={toggleDisplayAddQ} updateQuestions={updateQuestions} />
+  //   );
+  // }
   //   the actual component
+
   return (
     <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', margin: 'auto' }}>
       <h2>Questions:</h2>
@@ -137,8 +147,6 @@ const QnAParentComp = () => {
           <br />
         </span>
       </div>
-
-
     </div>
   );
 };
