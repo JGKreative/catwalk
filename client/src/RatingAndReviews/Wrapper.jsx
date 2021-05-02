@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewsList from './ReviewsList';
 import SortOptions from './SortOptions';
 import RatingsWrapper from './RatingsWrapper';
 import ReviewForm from './AddReviewForm';
 import ReactModal from 'react-modal';
+import { getReviews } from './ApiController';
+import centralState from '../appContext';
 
 import data from './fakeData';
 const reviewsData = data.reviewsForProductId20101.results;
@@ -14,17 +16,28 @@ const RatingsAndReviewsService = () => {
   const [reviews, setReviews] = useState(reviewsData);
   const [sortedBy, setSortedBy] = useState('helpfulness');
   const [displayModal, setDisplayModal] = useState(false);
+  const { productId, productName, productDescription } = centralState();
 
+  // helper functions:
   const toggleModal = () => {
     setDisplayModal(!displayModal);
   };
 
+  const updateReviews = () => {
+    getReviews(productId, setReviews);
+  };
+
+
+  useEffect(() => {
+    getReviews(productId, setReviews);
+  }, [productId]);
+
   return (
     <div className="RnR-Main">
-      <div style={{display: 'flex', justifyContent: 'left'}} id="alignMeLeft">
+      <div style={{ display: 'flex', justifyContent: 'left' }} id="alignMeLeft">
         <RatingsWrapper data={ratings} />
       </div>
-      <div style={{display: 'flex', justifyContent: 'right'}} id="alignMeRight">
+      <div style={{ display: 'flex', justifyContent: 'right' }} id="alignMeRight">
         <SortOptions data={reviews} setSorted={setSortedBy} />
         <ReviewsList data={reviews} sortBy={sortedBy} toggleModal={toggleModal} />
       </div>

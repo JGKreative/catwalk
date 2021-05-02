@@ -4,6 +4,7 @@ import RatingsBreakdown from './RatingsBreakdown';
 import ProductBreakdown from './ProductBreakdown';
 import { calculateAvgRating, calculateAvgRecommended } from './helperFunctions';
 
+
 const RatingsWrapper = ({ data }) => {
   const ratings = data.ratings;
   const recommended = data.recommended;

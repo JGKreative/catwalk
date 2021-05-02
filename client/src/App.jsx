@@ -23,7 +23,7 @@ const App = () => {
   return (
     <appContext.Provider value={contextExport} id="app">
       <button type="button" onClick={testUpdate}>Test Current Product Change</button>
-      <OverviewContainer />
+      {/* <OverviewContainer /> */}
       <RatingsAndReviewsService />
       <QnA />
     </appContext.Provider>
