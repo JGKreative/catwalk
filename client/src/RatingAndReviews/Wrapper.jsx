@@ -21,10 +21,13 @@ const RatingsAndReviewsService = () => {
 
   return (
     <div className="RnR-Main">
-
-      <RatingsWrapper data={ratings} />
-      <SortOptions data={reviews} setSorted={setSortedBy} />
-      <ReviewsList data={reviews} sortBy={sortedBy} toggleModal={toggleModal} />
+      <div style={{display: 'flex', justifyContent: 'left'}} id="alignMeLeft">
+        <RatingsWrapper data={ratings} />
+      </div>
+      <div style={{display: 'flex', justifyContent: 'right'}} id="alignMeRight">
+        <SortOptions data={reviews} setSorted={setSortedBy} />
+        <ReviewsList data={reviews} sortBy={sortedBy} toggleModal={toggleModal} />
+      </div>
       <ReactModal
         isOpen={displayModal}
         onRequestClose={toggleModal}
