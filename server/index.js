@@ -27,6 +27,11 @@ app.use('/qna', qnaRouter);
 app.use('/rnr', rnrRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
 
+
+//--- This is to navigate to products from url
+//--- (I think keep this at bottom so it doesn't intercept our component routers???)
+app.use('/:productId', express.static(path.join(__dirname, '/../public')))
+
 app.listen(PORT, () => {
   console.log(`Server running and listening at localhost:${PORT}`);
 })
