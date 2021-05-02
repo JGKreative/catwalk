@@ -14,7 +14,11 @@ const App = () => {
     const nextProductId = (Number(urlProductId) + 1);
     const nextProductIdStr = nextProductId.toString();
     const nextProductUrl = window.location.origin.concat(`/${nextProductIdStr}`);
-    window.parent.location = nextProductUrl;
+    if (!urlProductId) {
+      window.parent.location = window.location.origin.concat('/20101');
+    } else {
+      window.parent.location = nextProductUrl;
+    }
   };
   console.log('--------Current Product ID is:', productId, '------------');
 
@@ -24,10 +28,9 @@ const App = () => {
     productDescription,
   };
 
-
   useEffect(() => {
     if (urlProductId) {
-      changeProductId(window.location.pathname.split('/')[1]);
+      changeProductId(urlProductId);
     }
   }, [urlProductId]);
 
