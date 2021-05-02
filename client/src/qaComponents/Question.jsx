@@ -128,7 +128,7 @@ const Question = ({ question }) => {
         isOpen={showAddA}
         onRequestClose={toggleShowAddA}
         appElement={document.querySelector('#app')}
-        style={{overlay: {maxHeight: '60%', height:'50%', maxWidth: '50%', margin:'auto'}}}
+        style={{overlay: {maxHeight: '70%', height:'60%', maxWidth: '50%', margin:'auto'}}}
       >
         <h1>Submit your Answer</h1>
         <h3>
