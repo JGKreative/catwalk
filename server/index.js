@@ -23,8 +23,13 @@ app.use((req, res, next) => {
 //------------------------------------------------------//
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
+
 app.use('/qna', qnaRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
+
+//--- Look for and store certain product info
+//--- (I think keep this at bottom so it doesn't intercept our component routers???)
+app.use('/:productId', express.static(path.join(__dirname, '/../public')))
 
 app.listen(PORT, () => {
   console.log(`Server running and listening at localhost:${PORT}`);
