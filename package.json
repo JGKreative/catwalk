@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon server/index.js",
+    "start-aws": "node server/index.js",
     "test": "jest",
     "build": "webpack",
     "watch": "webpack -w"
