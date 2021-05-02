@@ -116,6 +116,7 @@ const QnAParentComp = () => {
         isOpen={displayAddQ}
         onRequestClose={toggleDisplayAddQ}
         appElement={document.querySelector('#app')}
+        style={{overlay: {maxHeight: '60%', height:'50%', maxWidth: '50%', margin:'auto'}}}
       >
         <h1>Ask Your Question</h1>
         <h3>
