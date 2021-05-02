@@ -9,6 +9,7 @@ const ImageList = ({
   // const [selectedThumbnailBorder, setSelectedThumbailBorder] = useState('');
 
   const setSelectedImage = (event) => {
+    console.log('setting selected image');
     updateMainImage(event);
   };
 
@@ -20,7 +21,14 @@ const ImageList = ({
   };
 
   return (
-    <ul>
+    <ul
+      style={{
+        marginTop: '5%',
+        position: 'absolute',
+        transition: 'all .2s ease-out',
+        listStyleType: 'none',
+      }}
+    >
       {images.map((image, index) => (
         <li key={styleId + index}>
           {/* // consider wrapping in button */}
