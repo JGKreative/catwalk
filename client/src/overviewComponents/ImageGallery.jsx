@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import ImageList from './ImageList';
 
-const ImageGallery = ({ images, styleId }) => {
-  const [mainImage, setMainImage] = useState(images[0].url);
-
+const ImageGallery = ({
+  mainImage, setMainImage, images, styleId,
+}) => {
   const updateMainImage = (event) => {
-    console.log('setting main image');
     setMainImage(event.target.alt);
   };
 

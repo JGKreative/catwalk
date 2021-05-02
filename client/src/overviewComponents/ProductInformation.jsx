@@ -10,6 +10,9 @@ const ProductInformation = ({
   <div
     style={{
       margin: '5%',
+      width: 'auto',
+      maxWidth: '30%',
+      height: 'auto',
     }}
   >
     <StarRating />

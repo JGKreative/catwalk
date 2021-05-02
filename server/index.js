@@ -1,6 +1,7 @@
 /* eslint-disable */
 const express = require('express')
 const path = require('path')
+const overviewRouter = require('./overViewRouter.js')
 const qnaRouter = require('./qnaRouter.js')
 const rnrRouter = require('./rnrRouter.js')
 const morgan = require('morgan'); /* <-- middleware */
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 //------------------------------------------------------//
 //------- ROUTER PATHS FOR DIFFERENT COMPONENTS --------//
 //------------------------------------------------------//
+app.use('/overview', overviewRouter);
 app.use('/qna', qnaRouter);
 app.use('/rnr', rnrRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
