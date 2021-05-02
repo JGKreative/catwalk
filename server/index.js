@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-const qnaRouter = require('./qnaRouter.js');
+// const qnaRouter = require('./qnaRouter.js');
 const morgan = require('morgan'); /* <-- middleware */
 
 const app = express();
@@ -27,7 +27,8 @@ app.use((req, res, next) => {
 app.use('/qna', qnaRouter);
 //app.use('/otherModuleEndPoints', otherModuleRouter);
 
-//--- Look for and store certain product info
+
+//--- This is to navigate to products from url
 //--- (I think keep this at bottom so it doesn't intercept our component routers???)
 app.use('/:productId', express.static(path.join(__dirname, '/../public')))
 
