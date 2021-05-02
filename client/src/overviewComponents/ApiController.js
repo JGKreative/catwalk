@@ -14,7 +14,6 @@ const api = {
   fetchProductById(productId, callback) {
     axios.get(`/overview/productInfo/${productId}`)
       .then((response) => {
-        console.log('product response data', response.data);
         callback(response.data);
       })
       .catch((error) => {
@@ -25,7 +24,6 @@ const api = {
   fetchProductStyles(productId, callback) {
     axios.get(`/overview/styles/${productId}`)
       .then((response) => {
-        console.log('styles response data', response.data.results);
         callback(response.data.results);
       })
       .catch((error) => {

@@ -15,7 +15,6 @@ const OverviewContainer = () => {
   const [currentStyle, setStyle] = useState();
   const [currentPrice, setCurrentPrice] = useState();
   const updateImageGallery = (newStyle) => {
-    console.log('setting new style');
     setStyle(newStyle);
   };
 
@@ -27,14 +26,12 @@ const OverviewContainer = () => {
   };
 
   useEffect(() => {
-    console.log('in use effect');
     api.fetchProductById(productId, setProduct);
     api.fetchProductStyles(productId, setProductStyles);
   }, [productId]);
 
   useEffect(() => {
     if (productStyles) {
-      console.log('setting current style...', productStyles);
       setStyle(productStyles[0]);
     }
   }, [productStyles]);
@@ -46,8 +43,6 @@ const OverviewContainer = () => {
   }, [currentStyle]);
 
   if (product && productStyles && currentStyle) {
-    console.log('successful');
-
     return (
       <div
         className="module product-description"
