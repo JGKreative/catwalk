@@ -18,8 +18,6 @@ const Review = ({ review, rating }) => {
     year: 'numeric', month: 'long', day: 'numeric'
   });
 
-  // console.log('PHOTOS', review.photos[0].url)
-
   const reviewPhotos = review.photos.map((img) => (
     <img style={{
       width: '150px',

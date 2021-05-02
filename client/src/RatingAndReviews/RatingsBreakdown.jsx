@@ -68,8 +68,6 @@ const RatingsBreakdown = ({ ratings }) => {
   ratingsPerStar.forEach(num => {
     seriesTwo.push(totalRatings - num);
   });
-  console.log(ratingsPerStar)
-  console.log(seriesTwo)
 
   let series = [{
     name: 'Ratings',
