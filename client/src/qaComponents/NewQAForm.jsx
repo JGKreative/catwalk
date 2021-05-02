@@ -35,7 +35,7 @@ const NewQAForm = ({
     <form id="askQuestion" onSubmit={submitForm}>
       {displayType()}
       <br />
-      <input id="newQBody" value={newQuestion} onChange={(event) => { handleChange(setNewQuestion, event); }} required type="text" maxLength="1000" placeholder="Example: Why did you like it or not?" />
+      <input id="newQBody" value={newQuestion} onChange={(event) => { handleChange(setNewQuestion, event); }} required type="text" maxLength="1000" placeholder="Example: Why did you like it or not?" style={{width:'500px', height:'75px', overflow:'hidden'}} />
       <br />
       What is your nickname
       <br />
