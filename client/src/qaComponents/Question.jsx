@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import AnswersList from './AnswersList';
 import Helpfulness from './Helpfulness';
 import NewQAForm from './NewQAForm';
+import { fetchAnswers } from './ApiController';
 
 const Question = ({ question }) => {
   //----------------------------------------
@@ -18,7 +19,8 @@ const Question = ({ question }) => {
 
   //-----------------------------------------
   // State:
-  const [allAnswers, setAllAnswers] = useState([]);
+  const [allAnswers, setAllAnswers] = useState(answers);
+  const [sortedAnswers, setSortedAnswers] = useState([]);
   const [displayAnswers, setDisplayAnswers] = useState([]);
   const [aDisplayMax, setADisplayMax] = useState(2);
   const [showAddA, setShowAddA] = useState(false);
@@ -48,8 +50,8 @@ const Question = ({ question }) => {
     return 0;
   };
 
-  const tempFuncForPropDrilling = () => {
-    console.log('create a QA context for API controls and add update answers req here to refresh after submit without needed to prop drill the func');
+  const refreshOnSubmit = () => {
+    fetchAnswers(id, setAllAnswers);
   };
 
   // ----------------------------------------
@@ -57,24 +59,29 @@ const Question = ({ question }) => {
 
   //   sort the answers by helpfulness
   useEffect(() => {
-    const sortedAnswers = Object.values(answers).sort(compareHelpfulness);
-    setAllAnswers(sortedAnswers);
-  }, [answers]);
+    let newSortedAnswers;
+    if (Array.isArray(allAnswers)) {
+      newSortedAnswers = allAnswers.slice().sort(compareHelpfulness);
+    } else {
+      newSortedAnswers = Object.values(answers).sort(compareHelpfulness);
+    }
+    setSortedAnswers(newSortedAnswers);
+  }, [allAnswers]);
 
   //   display correct number of answers
   useEffect(() => {
-    if (allAnswers) {
-      const displayAs = allAnswers.slice(0, aDisplayMax);
+    if (sortedAnswers.length) {
+      const displayAs = sortedAnswers.slice(0, aDisplayMax);
       setDisplayAnswers(displayAs);
     }
-  }, [allAnswers, aDisplayMax]);
+  }, [sortedAnswers.length, aDisplayMax]);
 
   // ----------------------------------------
   // Rendering the  Component
 
   //   conditional sub-components
   const moreABtn = () => {
-    if (displayAnswers.length < allAnswers.length) {
+    if (displayAnswers.length < sortedAnswers.length) {
       return (
         <button type="button" onClick={incrementADisplayMax}>Show more answers</button>
       );
@@ -98,7 +105,7 @@ const Question = ({ question }) => {
       <span>{body}</span>
       <span>{date}</span>
       <span>{askerName}</span>
-      <Helpfulness parentId={id} parentType="questions" helpfulnessRank={helpfulness} />
+      <Helpfulness parentId={id} parentType="questions" helpfulnessRank={helpfulness} updateQuestions={refreshOnSubmit} />
       <AnswersList answers={displayAnswers} />
       <ReactModal
         isOpen={showAddA}
@@ -110,7 +117,7 @@ const Question = ({ question }) => {
           About the
           {`Show Current Body and ${body} Change me once current product has a centralized state`}
         </h3>
-        <NewQAForm parentId={id} parentType="answers" closeOnSubmit={toggleShowAddA} updateQuestions={tempFuncForPropDrilling} />
+        <NewQAForm parentId={id} parentType="answers" closeOnSubmit={toggleShowAddA} updateQuestions={refreshOnSubmit} />
         <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
       <button type="button" onClick={toggleShowAddA}>Add an answer</button>
