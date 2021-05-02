@@ -107,8 +107,8 @@ const Question = ({ question }) => {
 
   //   the actual component
   return (
-    <div style={{ background: 'WhiteSmoke', border: 'groove', borderRadius: '10px', borderRadius: '10px', padding: (30, 30, 20, 20) }}>
-      <div>
+    <div style={{ background: 'lightgray', border: 'groove', borderRadius: '10px', borderRadius: '10px', padding: (30, 30, 20, 20) }}>
+      <div style={{paddingBottom: '20px', fontSize:'large'}}>
         <h4>Q:</h4>
         {body}
       </div>

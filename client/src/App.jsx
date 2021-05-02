@@ -34,7 +34,7 @@ const App = () => {
     }
   }, [urlProductId]);
 
-  const testBtnStyle = {
+  const wetTestBtnStyle = {
     marginLeft: '25%',
     marginBottom: '25px',
     padding: '25px',
@@ -46,8 +46,8 @@ const App = () => {
 
   return (
     <appContext.Provider value={contextExport} id="app">
-      <div style={{background: 'Gainsboro'}}>
-        <button type="button" onClick={testUpdate} style={testBtnStyle}>🐈🐈  Can haz next product plz?  🐈🐈</button>
+      <div>
+        <button type="button" onClick={testUpdate} style={wetTestBtnStyle}>🐈🐈  Can haz next product plz?  🐈🐈</button>
         <OverviewContainer />
         <RatingsAndReviewsService />
         <QnA />

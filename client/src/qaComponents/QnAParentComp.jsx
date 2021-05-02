@@ -105,7 +105,7 @@ const QnAParentComp = () => {
 
   //   the actual component
   return (
-    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', paddingLeft: '50px', margin: 'auto' }}>
+    <div id="qna" style={{ maxHeight: '90%', heigth: '50%', maxWidth: '60%', margin: 'auto' }}>
       <h2>Questions:</h2>
       <SearchBar
         searchTerm={searchTerm}

@@ -17,16 +17,17 @@ const Answer = ({ answer }) => {
   return (
     <div>
       <br />
-      <span>{body}</span>
+      <span style={{fontSize:'large'}}>{body}</span>
       <br />
-      <div>
+      <br />
+      <span>
         {answererName}
-      </div>
-      <br />
-      <div>
+      </span>
+      {'   ||   '}
+      <span>
         {formattedDate}
-      </div>
-      <br />
+      </span>
+      {'   ||   '}
       <Helpfulness parentId={id} parentType="answers" helpfulnessRank={helpfulness} />
       <br />
       <br />
