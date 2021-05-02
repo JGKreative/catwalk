@@ -132,11 +132,12 @@ const Question = ({ question }) => {
       >
         <h1>Submit your Answer</h1>
         <h3>
-          About the
-          {`Show Current Body and ${body} Change me once current product has a centralized state`}
+          About {productName} :
+          <br />
+          {body}
         </h3>
-        <button type="button" onClick={toggleShowAddA}>Go Back</button>
         <NewQAForm parentId={id} parentType="answers" closeOnSubmit={toggleShowAddA} updateQuestions={refreshOnSubmit} />
+        <button type="button" onClick={toggleShowAddA}>Go Back</button>
       </ReactModal>
     </div>
   );
