@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StarRating from './StarRating';
 import RatingsBreakdown from './RatingsBreakdown';
 import ProductBreakdown from './ProductBreakdown';
 import { calculateAvgRating, calculateAvgRecommended } from './helperFunctions';
 
+
 const RatingsWrapper = ({ data }) => {
+  const [ratingsFound, setRatingsFound] = useState(true);
+
+  // const checkForRatings = (data) => {
+  //   if (Object.keys(data.ratings).length === 0) {
+  //     setRatingsFound(false);
+  //   }
+  // }
+  // checkForRatings(data);
   const ratings = data.ratings;
   const recommended = data.recommended;
   const characteristics = data.characteristics;
-  const averageRating = calculateAvgRating(ratings);
+  const averageRating = ratingsFound ? calculateAvgRating(ratings) : 0;
   const averageRecommended = calculateAvgRecommended(recommended);
+
+
 
   return (
     <div className="ratings-breakdown-main">
@@ -20,7 +31,7 @@ const RatingsWrapper = ({ data }) => {
           <StarRating rating={averageRating} />
         </span>
       </div>
-      <RatingsBreakdown />
+      <RatingsBreakdown ratings={ratings} />
       <div id="average-recommended">
         {averageRecommended}% of reviews recommend this product
       </div>
