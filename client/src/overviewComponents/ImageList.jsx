@@ -22,6 +22,10 @@ const ImageList = ({
         position: 'absolute',
         transition: 'all .2s ease-out',
         listStyleType: 'none',
+        height: '90%',
+        width: '500px',
+        overflow: 'hidden',
+        overflowY: 'scroll',
       }}
     >
       {images.map((image, index) => (
