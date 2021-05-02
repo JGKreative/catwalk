@@ -10,7 +10,6 @@ import centralState from '../appContext';
 import data from './fakeData';
 const reviewsData = data.reviewsForProductId20101.results;
 const metaData = data.metaDataForProductId20101;
-console.log('metaData:', metaData)
 
 const RatingsAndReviewsService = () => {
   const [ratings, setRatings] = useState(metaData);

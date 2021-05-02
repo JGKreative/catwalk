@@ -49,6 +49,16 @@ const RatingsBreakdown = ({ ratings }) => {
   let totalRatings = 0;
   let seriesTwo = [];
 
+
+  const populateEmptyRatings = (obj) => {
+    for (let i = 1; i <= 5; i++) {
+      if (obj[i] === undefined) {
+        obj[i] = '0';
+      }
+    }
+  }
+  populateEmptyRatings(ratings)
+
   const populateData = Object.keys(ratings).map((key) => {
     let value = Number(ratings[key]);
     totalRatings += value;
@@ -56,8 +66,10 @@ const RatingsBreakdown = ({ ratings }) => {
   });
 
   ratingsPerStar.forEach(num => {
-    seriesTwo.unshift(totalRatings - num);
+    seriesTwo.push(totalRatings - num);
   });
+  console.log(ratingsPerStar)
+  console.log(seriesTwo)
 
   let series = [{
     name: 'Ratings',
@@ -66,20 +78,6 @@ const RatingsBreakdown = ({ ratings }) => {
     name: '',
     data: seriesTwo,
   }];
-
-  let keys = [1, 2, 3, 4, 5];
-  let foundKeys = [];
-  console.log('series[0].data', series[0].data);
-
-  keys.forEach((key, i) => {
-    if (series[0].data.includes(key)) {
-
-      let value = series[0].data[i];
-      console.log('series[0].data',);
-      foundKeys.push(value);
-    }
-  });
-  console.log('foundKeys:', foundKeys);
 
   return (
     <div id="chart">

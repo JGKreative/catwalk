@@ -37,7 +37,7 @@ const App = () => {
   return (
     <appContext.Provider value={contextExport} id="app">
       <button type="button" onClick={testUpdate}>🐈🐈  Can haz next product plz?  🐈🐈</button>
-      <OverviewContainer />
+      {/* <OverviewContainer /> */}
       <RatingsAndReviewsService />
       <QnA />
     </appContext.Provider>

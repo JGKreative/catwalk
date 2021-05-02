@@ -84,7 +84,7 @@ const ProductBreakdown = ({ data }) => {
       let charsId = charsData[key];
       let plottedBars = plotRatingToBar(convertedRating, dummyBar);
       let aDummySet =
-        <div id="characteristic-breakdown-bar" key={index}>
+        <div id="characteristic-breakdown-bar" key={index} >
           {key} <br />
           <span> {plottedBars[0]} {plottedBars[1]} {plottedBars[2]} </span>
           <br />

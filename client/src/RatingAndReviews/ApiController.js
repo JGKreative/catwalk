@@ -23,7 +23,7 @@ PUT: (reporting a review - flagging it to not show up)
       }
     })
     .then((response) => {
-      console.log('client has received a Reviews response from server:', response.data.results);
+      // console.log('client has received a Reviews response from server:', response.data.results);
       cb(response.data.results)
     })
     .catch(err => {
@@ -39,7 +39,7 @@ PUT: (reporting a review - flagging it to not show up)
       }
     })
     .then((response) => {
-      console.log('client has received a meta response from server:', response.data);
+      // console.log('client has received a meta response from server:', response.data);
       cb(response.data)
     })
     .catch(err => {
