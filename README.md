@@ -18,10 +18,21 @@ Modernizing the Catwalk merchant site.
    - browse and search reviews
    - rate helpfulness of reviews
    - report inappropriate reviews
+   
+   ![screenshot of Reviews](/screenshots/reviews.png?raw=true)
+   
    - post a review
-   - see product breakdown
+
+   ![screenshot of create-review-modal](/screenshots/addReviewModal.png?raw=true)
+   
    - see ratings breakdown
 
+   ![screenshot of Reviews](/screenshots/ratingsBreakdown.png?raw=true)
+
+   - see product breakdown
+   
+   ![screenshot of Reviews](/screenshots/featureBreakdown.png?raw=true)
+   
 - Questions and Answers
    - search, browse, and ask questions for a product
    - answer questions
