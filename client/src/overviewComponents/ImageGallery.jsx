@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import ReactModal from 'react-modal';
 import ImageList from './ImageList';
 
 const ImageGallery = ({
@@ -7,6 +8,7 @@ const ImageGallery = ({
   const updateMainImage = (event) => {
     setMainImage(event.target.alt);
   };
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div
@@ -15,8 +17,8 @@ const ImageGallery = ({
         width: '50%',
         maxWidth: '50%',
         margin: '2%',
+        objectFit: 'scale-down',
       }}
-      // object-fit="contain"
     >
       <ImageList
         id="images-list"
@@ -34,7 +36,9 @@ const ImageGallery = ({
           display: 'block',
           margin: 'auto',
         }}
+        // onClick={() => setModalIsOpen(true)}
       />
+      {/* <ReactModal isOpen={modalIsOpen} onClick={() => setModalIsOpen(false)}>HEllo</ReactModal> */}
     </div>
   );
 };
