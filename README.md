@@ -1,5 +1,8 @@
 # Catwalk
-Modernizing the Catwalk merchant site.
+A User Interface for a mock retail website, utilizing an external API and consisting of three primary modules:
+- Product Overview
+- Ratings & Reviews
+- Questions & Answers
 ---
 ## The Team
 - [Jared Rogers](https://github.com/rogersjared)
