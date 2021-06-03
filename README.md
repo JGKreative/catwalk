@@ -1,8 +1,8 @@
 # Catwalk
 A User Interface for a mock retail website, utilizing an external API and consisting of three primary modules:
-- Product Overview
-- Ratings & Reviews
-- Questions & Answers
+- [Product Overview](###product-Overview)
+- Ratings & Reviews(###ratings & reviews)
+- Questions & Answers(###questions-&-answers)
 ---
 ## The Team
 - [Jared Rogers](https://github.com/rogersjared)
@@ -11,13 +11,13 @@ A User Interface for a mock retail website, utilizing an external API and consis
 
 - [Kyle Harrington](https://github.com/Relykon)
 
-# Features
-- Products Overview
+## Features
+### Product Overview
    - See pictures
    - See Styles
    - Select size, style, quantity, and add to cart
   
-- Reviews
+### Ratings & Reviews
    - browse and search reviews
    - rate helpfulness of reviews
    - report inappropriate reviews
@@ -37,7 +37,7 @@ A User Interface for a mock retail website, utilizing an external API and consis
    
    ![screenshot of Reviews](/screenshots/featureBreakdown.png?raw=true)
    
-- Questions and Answers
+### Questions & Answers
    - search, browse, and ask questions for a product
    - answer questions
    - rate helpfulness of questions and answers
