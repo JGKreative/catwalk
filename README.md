@@ -18,6 +18,7 @@ Modernizing the Catwalk merchant site.
    - browse and search reviews
    - rate helpfulness of reviews
    - report inappropriate reviews
+   - sort reviews by relevance, helpfulness, newest
    
    ![screenshot of Reviews](/screenshots/reviews.png?raw=true)
    
