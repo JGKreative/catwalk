@@ -20,6 +20,7 @@ const App = () => {
       window.parent.location = nextProductUrl;
     }
   };
+  console.log('--------Current Product ID is:', productId, '------------');
 
   const contextExport = {
     productId,
